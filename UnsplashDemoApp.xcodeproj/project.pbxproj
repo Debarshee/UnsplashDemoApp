@@ -27,6 +27,8 @@
 		5726EA6C2642F65D00091D6B /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726EA682642F65D00091D6B /* UIImageView+Ext.swift */; };
 		5726EA6D2642F65D00091D6B /* ViewReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726EA692642F65D00091D6B /* ViewReusable.swift */; };
 		5726EA6E2642F65D00091D6B /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726EA6B2642F65D00091D6B /* ImageCache.swift */; };
+		57305A2B264593D400552FC8 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A2A264593D400552FC8 /* HomeTableViewCell.swift */; };
+		57305A2D2645964100552FC8 /* HomeTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A2C2645964100552FC8 /* HomeTableCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		5726EA682642F65D00091D6B /* UIImageView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		5726EA692642F65D00091D6B /* ViewReusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewReusable.swift; sourceTree = "<group>"; };
 		5726EA6B2642F65D00091D6B /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		57305A2A264593D400552FC8 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		57305A2C2645964100552FC8 /* HomeTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +90,6 @@
 			children = (
 				5726EA662642F65D00091D6B /* Reusable Components */,
 				5726EA4C2642F19E00091D6B /* Network Layer */,
-				5726EA392642D15F00091D6B /* APIs */,
 				5726EA172642A08700091D6B /* Module */,
 				5726EA162642A07800091D6B /* Resources */,
 				5726EA142642A04800091D6B /* Common */,
@@ -125,6 +128,7 @@
 		5726EA172642A08700091D6B /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				5726EA392642D15F00091D6B /* APIs */,
 				5726EA412642EBD100091D6B /* HomeScreen */,
 			);
 			path = Module;
@@ -160,6 +164,7 @@
 		5726EA432642EC0700091D6B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				57305A2A264593D400552FC8 /* HomeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				5726EA622642F2DD00091D6B /* HomeViewModel.swift */,
+				57305A2C2645964100552FC8 /* HomeTableCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -344,12 +350,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57305A2D2645964100552FC8 /* HomeTableCellViewModel.swift in Sources */,
 				5726EA6D2642F65D00091D6B /* ViewReusable.swift in Sources */,
 				5726EA5B2642F19F00091D6B /* JSONParameterEncoder.swift in Sources */,
 				5726EA6E2642F65D00091D6B /* ImageCache.swift in Sources */,
 				5726EA592642F19F00091D6B /* ParameterEncoding.swift in Sources */,
 				5726EA5D2642F19F00091D6B /* EndPoint.swift in Sources */,
 				5726EA5C2642F19F00091D6B /* AppError.swift in Sources */,
+				57305A2B264593D400552FC8 /* HomeTableViewCell.swift in Sources */,
 				5726EA0426429FA400091D6B /* HomeViewController.swift in Sources */,
 				5726EA0026429FA400091D6B /* AppDelegate.swift in Sources */,
 				5726EA6C2642F65D00091D6B /* UIImageView+Ext.swift in Sources */,

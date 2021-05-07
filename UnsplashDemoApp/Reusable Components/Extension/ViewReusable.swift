@@ -8,11 +8,11 @@
 import Foundation
 
 protocol ViewReusable {
-    static var cellIdentifier: String { get }
+    static var identifier: String { get }
 }
 
 extension ViewReusable {
-    static var cellIdentifier: String {
+    static var identifier: String {
         String(describing: self)
     }
 }
