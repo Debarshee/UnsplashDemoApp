@@ -8,7 +8,8 @@
 import Foundation
 
 protocol HomeViewModelDelegate: AnyObject {
-    func reloadData()
+    func reloadTableData()
+    func reloadCollectionData()
 }
 
 class HomeViewModel {
@@ -17,19 +18,26 @@ class HomeViewModel {
     
     let router = Router<PhotoApi>()
     
-    private var dataSource: [HomeTableCellViewModel] {
+    private var photoDataSource: [HomeTableCellViewModel] {
         didSet {
-            self.delegate?.reloadData()
+            self.delegate?.reloadTableData()
+        }
+    }
+    
+    private var topicDataSource: [HomeTableCellViewModel] {
+        didSet {
+            self.delegate?.reloadCollectionData()
         }
     }
     
     // MARK: - Initializer
     init(delegate: HomeViewModelDelegate) {
         self.delegate = delegate
-        self.dataSource = []
+        self.photoDataSource = []
+        self.topicDataSource = []
     }
     
-    func fetchData() {
+    func fetchPhotoData() {
         router.request(PhotoApi.photoCollection) { (result: Result<[Photo], AppError>) in
             switch result {
             case .success(let data):
@@ -38,7 +46,7 @@ class HomeViewModel {
                        item.source != nil
                     }
                     guard let newFilteredData = filteredData else { return }
-                    self.dataSource.append(contentsOf: newFilteredData.compactMap { HomeTableCellViewModel(dataSource: $0) }
+                    self.photoDataSource.append(contentsOf: newFilteredData.compactMap { HomeTableCellViewModel(dataSource: $0) }
                     )
                 }
                 
@@ -48,11 +56,23 @@ class HomeViewModel {
         }
     }
     
-    func numberOfRowsIn(section: Int) -> Int {
-        self.dataSource.count
+    func fetchTopicData() {
+        router.request(PhotoApi.topicCollection) { (result: Result<[Topic], AppError>) in
+            switch result {
+            case .success(let data):
+                print(data)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
-    func listData(at index: Int) -> HomeTableCellViewModel {
-        self.dataSource[index]
+    func numberOfRowsInTable(section: Int) -> Int {
+        self.photoDataSource.count
+    }
+    
+    func listDataForTable(at index: Int) -> HomeTableCellViewModel {
+        self.photoDataSource[index]
     }
 }

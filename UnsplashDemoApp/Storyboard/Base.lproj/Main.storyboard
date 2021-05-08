@@ -104,38 +104,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Swg-Jp-qQM">
-                                <rect key="frame" x="0.0" y="88" width="414" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ne8-l6-g4U">
-                                    <size key="itemSize" width="130" height="52"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="t4C-Bt-jWq">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wsY-aw-It8">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="52"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClS-QJ-PV5">
-                                                    <rect key="frame" x="10" y="11" width="110" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                </button>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="130" height="52"/>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z6l-EW-ge9">
-                                <rect key="frame" x="0.0" y="141" width="414" height="672"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z6l-EW-ge9">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCell" rowHeight="199" id="1c7-2G-Pup" customClass="HomeTableViewCell" customModule="UnsplashDemoApp" customModuleProvider="target">
@@ -179,14 +149,62 @@
                                     <outlet property="delegate" destination="Q3K-yb-8TH" id="F60-4t-s1M"/>
                                 </connections>
                             </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Swg-Jp-qQM">
+                                <rect key="frame" x="0.0" y="88" width="414" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ne8-l6-g4U">
+                                    <size key="itemSize" width="154" height="52"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCollectionViewCell" id="t4C-Bt-jWq" customClass="HomeCollectionViewCell" customModule="UnsplashDemoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.5" width="154" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wsY-aw-It8">
+                                            <rect key="frame" x="0.0" y="0.0" width="154" height="52"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9p-IT-DVs">
+                                                    <rect key="frame" x="10" y="15" width="41.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="P9p-IT-DVs" secondAttribute="trailing" constant="10" id="Nbb-cp-kcO"/>
+                                                <constraint firstItem="P9p-IT-DVs" firstAttribute="top" secondItem="wsY-aw-It8" secondAttribute="top" constant="15" id="VwZ-iC-4IG"/>
+                                                <constraint firstItem="P9p-IT-DVs" firstAttribute="leading" secondItem="wsY-aw-It8" secondAttribute="leading" constant="10" id="axh-o3-4ha"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="154" height="52"/>
+                                        <connections>
+                                            <outlet property="topicNameLabel" destination="P9p-IT-DVs" id="I2u-JI-y3N"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Q3K-yb-8TH" id="rLL-9n-ksY"/>
+                                    <outlet property="delegate" destination="Q3K-yb-8TH" id="Xem-LK-QGc"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0KV-b7-6wf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Z6l-EW-ge9" secondAttribute="trailing" id="BjA-jf-0sL"/>
+                            <constraint firstItem="Z6l-EW-ge9" firstAttribute="top" secondItem="0KV-b7-6wf" secondAttribute="top" id="FVf-yD-s1g"/>
+                            <constraint firstItem="Z6l-EW-ge9" firstAttribute="bottom" secondItem="0KV-b7-6wf" secondAttribute="bottom" id="GM4-Bs-3Zd"/>
+                            <constraint firstItem="Z6l-EW-ge9" firstAttribute="leading" secondItem="0KV-b7-6wf" secondAttribute="leading" id="hME-BY-23P"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="I4T-mK-ULa"/>
                     <connections>
+                        <outlet property="topicCollectionView" destination="Swg-Jp-qQM" id="6PW-GW-z79"/>
                         <outlet property="topicPhotosTableView" destination="Z6l-EW-ge9" id="6oV-tE-VtC"/>
-                        <outlet property="topicsCollectionView" destination="Swg-Jp-qQM" id="lg5-fu-3nt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dB0-Pk-Shz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -198,10 +216,12 @@
             <objects>
                 <tabBarController id="Cj2-Qg-kPK" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7HS-O5-Gc2"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gV8-lH-28W">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" systemColor="labelColor"/>
+                        <color key="selectedImageTintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="vp7-Uw-KDG" kind="relationship" relationship="viewControllers" id="DOj-vK-aYM"/>
@@ -217,11 +237,11 @@
         <!--Navigation Controller-->
         <scene sceneID="Dwi-6Y-lP2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vp7-Uw-KDG" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vp7-Uw-KDG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="photo" catalog="system" selectedImage="photo.fill" id="nVG-4F-oa9"/>
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xSl-XR-6JH">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

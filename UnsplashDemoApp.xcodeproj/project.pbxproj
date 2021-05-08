@@ -29,6 +29,9 @@
 		5726EA6E2642F65D00091D6B /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726EA6B2642F65D00091D6B /* ImageCache.swift */; };
 		57305A2B264593D400552FC8 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A2A264593D400552FC8 /* HomeTableViewCell.swift */; };
 		57305A2D2645964100552FC8 /* HomeTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A2C2645964100552FC8 /* HomeTableCellViewModel.swift */; };
+		57305A2F2645A98D00552FC8 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A2E2645A98C00552FC8 /* Topic.swift */; };
+		57305A312645B34E00552FC8 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A302645B34E00552FC8 /* HomeCollectionViewCell.swift */; };
+		57305A332645CA3B00552FC8 /* HomeCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A322645CA3B00552FC8 /* HomeCollectionCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		5726EA6B2642F65D00091D6B /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		57305A2A264593D400552FC8 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		57305A2C2645964100552FC8 /* HomeTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCellViewModel.swift; sourceTree = "<group>"; };
+		57305A2E2645A98C00552FC8 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		57305A302645B34E00552FC8 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		57305A322645CA3B00552FC8 /* HomeCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				57305A2A264593D400552FC8 /* HomeTableViewCell.swift */,
+				57305A302645B34E00552FC8 /* HomeCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				5726EA462642EC6500091D6B /* Photo.swift */,
+				57305A2E2645A98C00552FC8 /* Topic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +190,7 @@
 			children = (
 				5726EA622642F2DD00091D6B /* HomeViewModel.swift */,
 				57305A2C2645964100552FC8 /* HomeTableCellViewModel.swift */,
+				57305A322645CA3B00552FC8 /* HomeCollectionCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -357,6 +366,7 @@
 				5726EA592642F19F00091D6B /* ParameterEncoding.swift in Sources */,
 				5726EA5D2642F19F00091D6B /* EndPoint.swift in Sources */,
 				5726EA5C2642F19F00091D6B /* AppError.swift in Sources */,
+				57305A332645CA3B00552FC8 /* HomeCollectionCellViewModel.swift in Sources */,
 				57305A2B264593D400552FC8 /* HomeTableViewCell.swift in Sources */,
 				5726EA0426429FA400091D6B /* HomeViewController.swift in Sources */,
 				5726EA0026429FA400091D6B /* AppDelegate.swift in Sources */,
@@ -364,9 +374,11 @@
 				5726EA472642EC6500091D6B /* Photo.swift in Sources */,
 				5726EA5E2642F19F00091D6B /* HTTPTask.swift in Sources */,
 				5726EA5F2642F19F00091D6B /* HTTPMethod.swift in Sources */,
+				57305A312645B34E00552FC8 /* HomeCollectionViewCell.swift in Sources */,
 				5726EA632642F2DD00091D6B /* HomeViewModel.swift in Sources */,
 				5726EA5A2642F19F00091D6B /* URLParameterEncoder.swift in Sources */,
 				5726EA0226429FA400091D6B /* SceneDelegate.swift in Sources */,
+				57305A2F2645A98D00552FC8 /* Topic.swift in Sources */,
 				5726EA3B2642D15F00091D6B /* PhotoApi.swift in Sources */,
 				5726EA602642F19F00091D6B /* Router.swift in Sources */,
 			);
