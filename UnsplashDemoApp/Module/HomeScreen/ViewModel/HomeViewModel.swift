@@ -96,4 +96,10 @@ class HomeViewModel {
     func listDataForCollection(at index: Int) -> HomeCollectionCellViewModel {
         self.topicDataSource[index]
     }
+    
+    func selectedDataFromTable(at index: Int) -> PhotoDetailViewModel? {
+        let data = self.photoDataSource[index]
+        let topicPhotoData = PhotoDetailViewModel(photoData: PhotoDetailInfo(image: data.image))
+        return topicPhotoData
+    }
 }

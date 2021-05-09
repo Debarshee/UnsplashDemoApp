@@ -56,6 +56,17 @@ extension HomeViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - TableView Delegate
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = homeViewModel.selectedDataFromTable(at: indexPath.row)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let photoViewController = storyboard.instantiateViewController(withIdentifier: "PhotoViewController") as? PhotoViewController else { return }
+        photoViewController.photoDetailViewModel = data
+        self.navigationController?.pushViewController(photoViewController, animated: true)
+    }
+}
+
 // MARK: - CollectionView DataSource
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

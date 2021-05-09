@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -241,6 +242,108 @@
             </objects>
             <point key="canvasLocation" x="3166.666666666667" y="-759.375"/>
         </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="gGm-W7-Nth">
+            <objects>
+                <viewController storyboardIdentifier="PhotoViewController" id="dqc-jm-YlO" customClass="PhotoViewController" customModule="UnsplashDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1E4-mW-ree">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FJN-Qt-dS9">
+                                <rect key="frame" x="0.0" y="250" width="414" height="396"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54T-pO-GmB">
+                                <rect key="frame" x="20" y="768" width="25" height="24"/>
+                                <color key="tintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <imageReference key="image" image="info.circle" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ly0-JT-jfV">
+                                <rect key="frame" x="347.66666666666669" y="747" width="46.333333333333314" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="tintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.down.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32" scale="default"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znf-Kb-IKf">
+                                <rect key="frame" x="347.66666666666669" y="682" width="46.333333333333314" height="45"/>
+                                <color key="tintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGZ-87-luD">
+                                <rect key="frame" x="347.66666666666669" y="617" width="46.333333333333314" height="45"/>
+                                <color key="tintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="heart.circle" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="32"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjT-HY-sLV">
+                                <rect key="frame" x="186" y="40" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Egj-ur-Atg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bB-IQ-oTB">
+                                <rect key="frame" x="375" y="40" width="19" height="23"/>
+                                <color key="tintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="square.and.arrow.up" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qsd-Iw-9yP">
+                                <rect key="frame" x="20" y="35" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonClicked:" destination="dqc-jm-YlO" eventType="touchDown" id="Xq8-wo-4Hy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="N2s-QO-Gzs"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstItem="Qsd-Iw-9yP" firstAttribute="leading" secondItem="N2s-QO-Gzs" secondAttribute="leading" constant="20" id="2HJ-3A-fgW"/>
+                            <constraint firstItem="gjT-HY-sLV" firstAttribute="centerX" secondItem="1E4-mW-ree" secondAttribute="centerX" id="2oA-3L-Lf2"/>
+                            <constraint firstItem="54T-pO-GmB" firstAttribute="leading" secondItem="N2s-QO-Gzs" secondAttribute="leading" constant="20" id="9te-lX-x68"/>
+                            <constraint firstItem="znf-Kb-IKf" firstAttribute="top" secondItem="eGZ-87-luD" secondAttribute="bottom" constant="20" id="CbC-25-0G3"/>
+                            <constraint firstItem="FJN-Qt-dS9" firstAttribute="trailing" secondItem="N2s-QO-Gzs" secondAttribute="trailing" id="Fud-6S-3gR"/>
+                            <constraint firstItem="Qsd-Iw-9yP" firstAttribute="top" secondItem="1E4-mW-ree" secondAttribute="top" constant="35" id="HfN-f2-xf3"/>
+                            <constraint firstItem="FJN-Qt-dS9" firstAttribute="width" secondItem="1E4-mW-ree" secondAttribute="width" id="Kog-m5-cEF"/>
+                            <constraint firstItem="FJN-Qt-dS9" firstAttribute="leading" secondItem="N2s-QO-Gzs" secondAttribute="leading" id="PD5-ZM-bFc"/>
+                            <constraint firstItem="N2s-QO-Gzs" firstAttribute="trailing" secondItem="ly0-JT-jfV" secondAttribute="trailing" constant="20" id="R9k-YR-ZC0"/>
+                            <constraint firstItem="N2s-QO-Gzs" firstAttribute="bottom" secondItem="ly0-JT-jfV" secondAttribute="bottom" constant="70" id="atG-iq-V6u"/>
+                            <constraint firstItem="N2s-QO-Gzs" firstAttribute="trailing" secondItem="5bB-IQ-oTB" secondAttribute="trailing" constant="20" id="c62-uA-Syg"/>
+                            <constraint firstItem="ly0-JT-jfV" firstAttribute="top" secondItem="znf-Kb-IKf" secondAttribute="bottom" constant="20" id="cGR-mV-0QF"/>
+                            <constraint firstItem="N2s-QO-Gzs" firstAttribute="trailing" secondItem="eGZ-87-luD" secondAttribute="trailing" constant="20" id="hyN-VU-3dF"/>
+                            <constraint firstItem="N2s-QO-Gzs" firstAttribute="trailing" secondItem="znf-Kb-IKf" secondAttribute="trailing" constant="20" id="l59-FM-DVW"/>
+                            <constraint firstItem="gjT-HY-sLV" firstAttribute="top" secondItem="1E4-mW-ree" secondAttribute="top" constant="40" id="rgO-AW-dmR"/>
+                            <constraint firstItem="N2s-QO-Gzs" firstAttribute="bottom" secondItem="54T-pO-GmB" secondAttribute="bottom" constant="70" id="sKt-2S-N2i"/>
+                            <constraint firstItem="FJN-Qt-dS9" firstAttribute="centerY" secondItem="1E4-mW-ree" secondAttribute="centerY" id="tFl-RD-OBg"/>
+                            <constraint firstItem="5bB-IQ-oTB" firstAttribute="top" secondItem="1E4-mW-ree" secondAttribute="top" constant="40" id="vRS-R6-Ucz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xoh-GX-0d7"/>
+                    <connections>
+                        <outlet property="closeButton" destination="Qsd-Iw-9yP" id="2NT-qc-rCX"/>
+                        <outlet property="photoImageView" destination="FJN-Qt-dS9" id="Uvy-ti-FYt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mtm-AP-8UQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4638" y="203"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ucg-3B-57y">
             <objects>
@@ -360,13 +463,18 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="heart.circle" catalog="system" width="128" height="121"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="plus.square" catalog="system" width="128" height="114"/>
         <image name="plus.square.fill" catalog="system" width="128" height="114"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
