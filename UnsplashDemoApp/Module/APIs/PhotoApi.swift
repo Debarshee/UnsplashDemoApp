@@ -10,6 +10,7 @@ import Foundation
 enum PhotoApi {
     case photoCollection
     case topicCollection
+    case topicPhotos(id: String)
 }
 
 extension PhotoApi: EndPoint {
@@ -21,6 +22,9 @@ extension PhotoApi: EndPoint {
             
         case .topicCollection:
             return "topics/"
+        
+        case .topicPhotos(let id):
+            return "topics/\(id)/photos"
         }
     }
     
@@ -35,6 +39,14 @@ extension PhotoApi: EndPoint {
             )
             
         case .topicCollection:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: [
+                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                      ]
+            )
+            
+        case .topicPhotos:
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [

@@ -17,8 +17,10 @@ class HomeViewController: UIViewController {
     @IBOutlet private weak var topicCollectionView: UICollectionView! {
         didSet {
             self.topicCollectionView.dataSource = self
+            self.topicCollectionView.delegate = self
         }
     }
+    @IBOutlet private weak var topicCollectionContainerView: UIView!
     
     lazy var homeViewModel = HomeViewModel(delegate: self)
     
@@ -26,13 +28,20 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         topicCollectionView.backgroundColor = .clear
-        homeViewModel.fetchPhotoData()
+        homeViewModel.fetchTopicPhotos(for: "bo8jQKTaE0Y")
         homeViewModel.fetchTopicData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // let selectedIndexPath = IndexPath(item: 0, section: 0)
+        // topicCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
     }
 }
 
 // MARK: - TableView DataSource
 extension HomeViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         homeViewModel.numberOfRowsInTable(section: section)
     }
@@ -50,14 +59,33 @@ extension HomeViewController: UITableViewDataSource {
 // MARK: - CollectionView DataSource
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        homeViewModel.numberOfRowsInCollection(section: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else {
             fatalError("Failed to dequeue the cell")
         }
-        return cell
+        let data = homeViewModel.listDataForCollection(at: indexPath.row)
+        cell.configure(configurator: data)
+        switch indexPath.row {
+        case 0:
+            collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+            cell.layer.borderWidth = 2
+            cell.layer.borderColor = UIColor.gray.cgColor
+            return cell
+
+        default:
+            return cell
+        }
+    }
+}
+
+// MARK: - CollectionView Delegate
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = homeViewModel.listDataForCollection(at: indexPath.row)
+        homeViewModel.fetchTopicPhotos(for: data.topicId)
     }
 }
 

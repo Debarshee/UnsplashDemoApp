@@ -24,7 +24,7 @@ class HomeViewModel {
         }
     }
     
-    private var topicDataSource: [HomeTableCellViewModel] {
+    private var topicDataSource: [HomeCollectionCellViewModel] {
         didSet {
             self.delegate?.reloadCollectionData()
         }
@@ -37,18 +37,30 @@ class HomeViewModel {
         self.topicDataSource = []
     }
     
-    func fetchPhotoData() {
-        router.request(PhotoApi.photoCollection) { (result: Result<[Photo], AppError>) in
+//    func fetchPhotoData() {
+//        router.request(PhotoApi.photoCollection) { (result: Result<[Photo], AppError>) in
+//            switch result {
+//            case .success(let data):
+//                for items in data {
+//                    let filteredData = items.tags?.filter { item -> Bool in
+//                       item.source != nil
+//                    }
+//                    guard let newFilteredData = filteredData else { return }
+//                    self.photoDataSource.append(contentsOf: newFilteredData.compactMap { HomeTableCellViewModel(dataSource: $0) }
+//                    )
+//                }
+//
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
+    
+    func fetchTopicData() {
+        router.request(PhotoApi.topicCollection) { (result: Result<[Topic], AppError>) in
             switch result {
             case .success(let data):
-                for items in data {
-                    let filteredData = items.tags?.filter { item -> Bool in
-                       item.source != nil
-                    }
-                    guard let newFilteredData = filteredData else { return }
-                    self.photoDataSource.append(contentsOf: newFilteredData.compactMap { HomeTableCellViewModel(dataSource: $0) }
-                    )
-                }
+                self.topicDataSource.append(contentsOf: data.compactMap { HomeCollectionCellViewModel(dataSource: $0) })
                 
             case .failure(let error):
                 print(error)
@@ -56,12 +68,13 @@ class HomeViewModel {
         }
     }
     
-    func fetchTopicData() {
-        router.request(PhotoApi.topicCollection) { (result: Result<[Topic], AppError>) in
+    func fetchTopicPhotos(for topicId: String) {
+        router.request(PhotoApi.topicPhotos(id: topicId)) { (result: Result<[TopicPhoto], AppError>) in
             switch result {
             case .success(let data):
-                print(data)
-                
+                self.photoDataSource.removeAll()
+                self.photoDataSource.append(contentsOf: data.compactMap { HomeTableCellViewModel(dataSource: $0) })
+            
             case .failure(let error):
                 print(error)
             }
@@ -74,5 +87,13 @@ class HomeViewModel {
     
     func listDataForTable(at index: Int) -> HomeTableCellViewModel {
         self.photoDataSource[index]
+    }
+    
+    func numberOfRowsInCollection(section: Int) -> Int {
+        self.topicDataSource.count
+    }
+    
+    func listDataForCollection(at index: Int) -> HomeCollectionCellViewModel {
+        self.topicDataSource[index]
     }
 }

@@ -12,6 +12,6 @@ class HomeCollectionViewCell: UICollectionViewCell, ViewReusable {
     @IBOutlet private weak var topicNameLabel: UILabel!
     
     func configure(configurator: HomeCollectionCellViewModel) {
-        topicNameLabel.text = "Wallpapers"
+        topicNameLabel.text = configurator.title
     }
 }

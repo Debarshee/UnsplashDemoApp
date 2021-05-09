@@ -9,11 +9,12 @@ import Foundation
 
 protocol HomeCollectionCellViewModelProtocol {
     var title: String { get }
+    var topicId: String { get }
 }
 
 class HomeCollectionCellViewModel: HomeCollectionCellViewModelProtocol {
     
-    var dataSource: Topic
+    private var dataSource: Topic
     
     init(dataSource: Topic) {
         self.dataSource = dataSource
@@ -21,5 +22,9 @@ class HomeCollectionCellViewModel: HomeCollectionCellViewModelProtocol {
     
     var title: String {
         dataSource.title ?? ""
+    }
+    
+    var topicId: String {
+        dataSource.id ?? ""
     }
 }

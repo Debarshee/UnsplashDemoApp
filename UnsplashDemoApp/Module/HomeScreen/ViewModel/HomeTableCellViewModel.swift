@@ -14,17 +14,17 @@ protocol HomeTableCellViewModelProtocol {
 
 class HomeTableCellViewModel: HomeTableCellViewModelProtocol {
     
-    private var dataSource: PhotoInfo
+    private var dataSource: TopicPhoto
     
-    init(dataSource: PhotoInfo) {
+    init(dataSource: TopicPhoto) {
         self.dataSource = dataSource
     }
     
     var image: String {
-        self.dataSource.source?.coverPhoto?.urls?.thumb ?? ""
+        self.dataSource.urls?.small ?? ""
     }
     
     var name: String {
-        self.dataSource.title ?? ""
+        "\(dataSource.user?.firstName ?? "") \(dataSource.user?.lastName ?? "")"
     }
 }

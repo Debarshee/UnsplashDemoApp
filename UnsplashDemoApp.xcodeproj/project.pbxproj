@@ -32,6 +32,7 @@
 		57305A2F2645A98D00552FC8 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A2E2645A98C00552FC8 /* Topic.swift */; };
 		57305A312645B34E00552FC8 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A302645B34E00552FC8 /* HomeCollectionViewCell.swift */; };
 		57305A332645CA3B00552FC8 /* HomeCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A322645CA3B00552FC8 /* HomeCollectionCellViewModel.swift */; };
+		573D3F1726472B5A00E8C03F /* TopicPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573D3F1626472B5A00E8C03F /* TopicPhoto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		57305A2E2645A98C00552FC8 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		57305A302645B34E00552FC8 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		57305A322645CA3B00552FC8 /* HomeCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		573D3F1626472B5A00E8C03F /* TopicPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicPhoto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			children = (
 				5726EA462642EC6500091D6B /* Photo.swift */,
 				57305A2E2645A98C00552FC8 /* Topic.swift */,
+				573D3F1626472B5A00E8C03F /* TopicPhoto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				5726EA592642F19F00091D6B /* ParameterEncoding.swift in Sources */,
 				5726EA5D2642F19F00091D6B /* EndPoint.swift in Sources */,
 				5726EA5C2642F19F00091D6B /* AppError.swift in Sources */,
+				573D3F1726472B5A00E8C03F /* TopicPhoto.swift in Sources */,
 				57305A332645CA3B00552FC8 /* HomeCollectionCellViewModel.swift in Sources */,
 				57305A2B264593D400552FC8 /* HomeTableViewCell.swift in Sources */,
 				5726EA0426429FA400091D6B /* HomeViewController.swift in Sources */,
