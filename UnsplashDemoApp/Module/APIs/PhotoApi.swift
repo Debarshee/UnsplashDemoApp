@@ -11,6 +11,9 @@ enum PhotoApi {
     case photoCollection
     case topicCollection
     case topicPhotos(id: String)
+    case userPhotos(username: String)
+    case userCollection(username: String)
+    case userLikes(username: String)
 }
 
 extension PhotoApi: EndPoint {
@@ -25,6 +28,15 @@ extension PhotoApi: EndPoint {
         
         case .topicPhotos(let id):
             return "topics/\(id)/photos"
+        
+        case .userPhotos(let username):
+            return "users/\(username)/photos"
+            
+        case .userCollection(let username):
+            return "users/\(username)/collections"
+        
+        case .userLikes(let username):
+            return "users/\(username)/likes"
         }
     }
     
@@ -47,6 +59,30 @@ extension PhotoApi: EndPoint {
             )
             
         case .topicPhotos:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: [
+                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                      ]
+            )
+        
+        case .userPhotos:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: [
+                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                      ]
+            )
+        
+        case .userCollection:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: [
+                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                      ]
+            )
+        
+        case .userLikes:
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [

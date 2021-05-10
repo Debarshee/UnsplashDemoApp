@@ -18,6 +18,8 @@ class HomeViewModel {
     
     let router = Router<PhotoApi>()
     
+    private var dataSource: [PhotoViewViewModel]
+    
     private var photoDataSource: [HomeTableCellViewModel] {
         didSet {
             self.delegate?.reloadTableData()
@@ -35,6 +37,7 @@ class HomeViewModel {
         self.delegate = delegate
         self.photoDataSource = []
         self.topicDataSource = []
+        self.dataSource = []
     }
     
 //    func fetchPhotoData() {
@@ -73,8 +76,10 @@ class HomeViewModel {
             switch result {
             case .success(let data):
                 self.photoDataSource.removeAll()
+                self.dataSource.removeAll()
                 self.photoDataSource.append(contentsOf: data.compactMap { HomeTableCellViewModel(dataSource: $0) })
-            
+                self.dataSource.append(contentsOf: data.compactMap { PhotoViewViewModel(photoData: $0) })
+                
             case .failure(let error):
                 print(error)
             }
@@ -97,9 +102,11 @@ class HomeViewModel {
         self.topicDataSource[index]
     }
     
-    func selectedDataFromTable(at index: Int) -> PhotoDetailViewModel? {
-        let data = self.photoDataSource[index]
-        let topicPhotoData = PhotoDetailViewModel(photoData: PhotoDetailInfo(image: data.image))
-        return topicPhotoData
+    func selectedDataFromTable(at index: Int) -> PhotoViewViewModel? {
+//        let data = self.dataSource[index]
+//        let topicPhotoData = PhotoViewViewModel(photoData: data)
+//        return topicPhotoData
+        
+        self.dataSource[index]
     }
 }
