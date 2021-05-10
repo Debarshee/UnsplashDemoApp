@@ -29,15 +29,24 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userDetailViewModel?.delegate = self
         userNameLabel.text = userDetailViewModel?.getUserFullName()
         userImageView.downloadImage(with: userDetailViewModel?.getUserImage())
+        
+        // Blur effect to image view
         let darkBlur = UIBlurEffect(style: .dark)
         let blurView = UIVisualEffectView(effect: darkBlur)
         blurView.frame = userImageView.bounds
         userImageView.addSubview(blurView)
         userProfileImageView.downloadImage(with: userDetailViewModel?.getUserProfileImage())
+        
+        // Set Circular bounds to profile image
         userProfileImageView.layer.cornerRadius = userProfileImageView.frame.width / 2
         userProfileImageView.clipsToBounds = true
+        
+        // Set text color for segmented control
+        userSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+        userSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         if userDetailViewModel?.getUserLocation() == "" {
             userLocationLabel.isHidden = true
             userLocationImageView.isHidden = true
@@ -51,7 +60,10 @@ class UserDetailViewController: UIViewController {
         } else {
             userLinkLabel.text = userDetailViewModel?.getUserLink()
         }
-        
+        userDetailViewModel?.getUserPhotos()
+    }
+    
+    @IBAction private func userSegmentedControlSelected(_ sender: UISegmentedControl) {
         switch userSegmentControl.selectedSegmentIndex {
         case 0:
             userDetailViewModel?.getUserPhotos()
@@ -74,10 +86,24 @@ class UserDetailViewController: UIViewController {
 
 extension UserDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        userDetailViewModel?.numberOfRowsIn(section: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier) as? UserTableViewCell else {
+            fatalError("Failed to dequeue the cell")
+        }
+        guard let data = userDetailViewModel?.dataForCell(at: indexPath.row) else {
+            fatalError("Failed to get data")
+        }
+        cell.configure(configurator: data)
+        return cell
+    }
+}
+
+// MARK: - View Model Delegate
+extension UserDetailViewController: UserDetailViewModelDelegate {
+    func reloadTableData() {
+        self.userTableView.reloadData()
     }
 }

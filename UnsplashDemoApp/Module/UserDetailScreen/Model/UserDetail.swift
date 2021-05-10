@@ -8,5 +8,8 @@
 import Foundation
 
 struct UserDetail {
-    var photo: TopicPhoto
+    var userImage: String?
+    var userFullName: String?
+    var imageTitle: String?
+    var imageOwnerName: String?
 }

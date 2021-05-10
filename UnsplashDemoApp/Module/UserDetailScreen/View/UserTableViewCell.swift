@@ -7,7 +7,11 @@
 
 import UIKit
 
-class UserTableViewCell: UITableViewCell {
+class UserTableViewCell: UITableViewCell, ViewReusable {
     
     @IBOutlet private weak var userPhotoImageView: UIImageView!
+    
+    func configure(configurator: UserTableCellViewModel) {
+        userPhotoImageView.downloadImage(with: configurator.photoUrl)
+    }
 }
