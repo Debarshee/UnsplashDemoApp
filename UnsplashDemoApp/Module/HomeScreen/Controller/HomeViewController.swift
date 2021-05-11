@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
         }
     }
     @IBOutlet private weak var topicCollectionContainerView: UIView!
+    @IBOutlet private weak var reviewButton: UIButton!
     
     lazy var homeViewModel = HomeViewModel(delegate: self)
     
@@ -36,6 +37,10 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(animated)
         // let selectedIndexPath = IndexPath(item: 0, section: 0)
         // topicCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
+    }
+    
+    @IBAction private func reviewButtonClicked(_ sender: UIButton) {
+        print("Clicked")
     }
 }
 

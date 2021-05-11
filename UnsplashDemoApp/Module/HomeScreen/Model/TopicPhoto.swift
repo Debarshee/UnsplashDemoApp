@@ -20,15 +20,13 @@ struct TopicPhoto: Decodable {
     var altDescription: String?
     var urls: TopicPhotoUrl?
     var links: TopicPhotoLinks?
-    // var categories: []
     var likes: Int?
     var likedByUser: Bool
-    // var current_user_collections: []
-    // var sponsorship: null
     var user: TopicPhotoUserInfo?
+    var tags: [PhotoInfo]?
     
     enum CodingKeys: String, CodingKey {
-        case id, width, height, color, description, urls, links, likes, user
+        case id, width, height, color, description, urls, links, likes, user, tags
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case promotedAt = "promoted_at"
