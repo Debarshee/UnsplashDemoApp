@@ -23,7 +23,11 @@ class PhotoInfoViewController: UIViewController {
     @IBOutlet private weak var dimensionLabel: UILabel!
     @IBOutlet private weak var publishedLabel: UILabel!
     
-    @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var mapView: MKMapView! {
+        didSet {
+            self.mapView.delegate = self
+        }
+    }
     
     var photoViewModel: PhotoViewViewModel?
     
@@ -43,14 +47,33 @@ class PhotoInfoViewController: UIViewController {
         }
         if photoLocationText.isEmpty {
             locationLabel.removeFromSuperview()
+            photoDescriptionLabel.removeFromSuperview()
             locationIconImageView.removeFromSuperview()
             mapView.removeFromSuperview()
         } else {
+            photoDescriptionLabel.text = photoViewModel?.photoDescription
             locationLabel.text = photoLocationText
+            photoViewModel?.setAnnotation(on: mapView)
         }
     }
     
     @IBAction private func closeButtonClicked(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension PhotoInfoViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+        let identifier = "Annotation"
+        var view: MKMarkerAnnotationView
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+        }
+        return view
     }
 }

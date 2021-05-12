@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 protocol PhotoViewViewModelProtocol {
     var photoImage: String { get }
@@ -18,6 +19,7 @@ protocol PhotoViewViewModelProtocol {
     var photoFocalLength: String { get }
     var photoISO: String { get }
     var photoLocation: String { get }
+    var photoDescription: String { get }
 }
 
 class PhotoViewViewModel: PhotoViewViewModelProtocol {
@@ -85,8 +87,26 @@ class PhotoViewViewModel: PhotoViewViewModelProtocol {
         }
     }
     
+    var photoDescription: String {
+        self.photoData.description ?? self.photoData.altDescription ?? ""
+    }
+    
     func passUserData() -> UserDetailViewModel {
         UserDetailViewModel(userDataSource: photoData)
+    }
+    
+    func setAnnotation(on mapView: MKMapView) {
+        let annotation = MKPointAnnotation()
+        let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(photoData.location?.position?.latitude ?? 0),
+                                                longitude: CLLocationDegrees(photoData.location?.position?.longitude ?? 0))
+        annotation.title = self.photoData.location?.name ?? ""
+        annotation.coordinate = coordinate
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegion(center: coordinate,
+                                                  latitudinalMeters: regionRadius * 2.0,
+                                                  longitudinalMeters: regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.addAnnotation(annotation)
     }
     
     func getPhotoData() {
