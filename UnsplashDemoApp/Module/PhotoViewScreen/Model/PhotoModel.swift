@@ -11,6 +11,7 @@ struct PhotoModel: Decodable {
     var id: String?
     var createdAt: String?
     var updatedAt: String?
+    var promotedAt: String?
     var width: Int?
     var height: Int?
     var color: String?
@@ -37,6 +38,7 @@ struct PhotoModel: Decodable {
         case id, width, height, color, description, urls, links, likes, user, exif, location, meta, tags, views, downloads
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case promotedAt = "promoted_at"
         case blurHash = "blur_hash"
         case altDescription = "alt_description"
         case likedByUser = "liked_by_user"
@@ -100,7 +102,7 @@ struct PhotoModelUser: Decodable {
     var links: PhotoModelUserLinks?
     var profileImage: PhotoModelUserProfileImage?
     var instagramUsername: String?
-    var totalCollections: String?
+    var totalCollections: Int?
     var totalLikes: Int?
     var totalPhotos: Int?
     var acceptedTos: Bool
@@ -164,12 +166,14 @@ struct PhotoModelExtraInfo: Decodable {
 }
 
 struct PhotoModelLocation: Decodable {
+    var title: String?
+    var name: String?
     var city: String?
     var country: String?
     var position: PhotoModelLocationPosition?
     
     enum CodingKeys: String, CodingKey {
-        case city, country, position
+        case title, name, city, country, position
     }
 }
 

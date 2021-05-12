@@ -23,6 +23,7 @@ class AddPhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.getCollectionData()
+        defaultPhotoImageView.image = UIImage(systemName: "photo.fill")
     }
 }
 

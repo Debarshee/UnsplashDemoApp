@@ -53,7 +53,7 @@ class HomeViewModel {
     }
     
     func fetchTopicPhotos(for topicId: String) {
-        router.request(PhotoApi.topicPhotos(id: topicId)) { (result: Result<[TopicPhoto], AppError>) in
+        router.request(PhotoApi.topicPhotos(id: topicId)) { (result: Result<[PhotoModel], AppError>) in
             switch result {
             case .success(let data):
                 self.photoDataSource.removeAll()

@@ -15,7 +15,7 @@ class UserDetailViewModel {
     
     // MARK: - Properties
     let router = Router<PhotoApi>()
-    private var userDataSource: TopicPhoto
+    private var userDataSource: PhotoModel
     weak var delegate: UserDetailViewModelDelegate?
     
     private var dataSource: [UserTableCellViewModel] {
@@ -25,7 +25,7 @@ class UserDetailViewModel {
     }
     
     // MARK: - Initializers
-    init(userDataSource: TopicPhoto) {
+    init(userDataSource: PhotoModel) {
         self.userDataSource = userDataSource
         self.dataSource = []
     }
@@ -56,7 +56,7 @@ class UserDetailViewModel {
     }
     
     func getUserPhotos() {
-        router.request(PhotoApi.userPhotos(username: getUsername())) { (result: Result<[TopicPhoto], AppError>) in
+        router.request(PhotoApi.userPhotos(username: getUsername())) { (result: Result<[PhotoModel], AppError>) in
             switch result {
             case .success(let data):
                 self.dataSource.removeAll()
@@ -85,7 +85,6 @@ class UserDetailViewModel {
                     }
                     guard let newFilteredData = filteredData else { return }
                     
-                    // Configuring Photo object to PhotoData Object within ListCellViewModel
                     self.dataSource.append(contentsOf: newFilteredData.compactMap({ item -> UserTableCellViewModel? in
                         let userDetail = UserDetail(userImage: item.source?.coverPhoto?.urls?.small,
                                                     userFullName: self.getUserFullName(),
@@ -102,7 +101,7 @@ class UserDetailViewModel {
     }
     
     func getUserLikes() {
-        router.request(PhotoApi.userLikes(username: getUsername())) { (result: Result<[TopicPhoto], AppError>) in
+        router.request(PhotoApi.userLikes(username: getUsername())) { (result: Result<[PhotoModel], AppError>) in
             switch result {
             case .success(let data):
                 self.dataSource.removeAll()

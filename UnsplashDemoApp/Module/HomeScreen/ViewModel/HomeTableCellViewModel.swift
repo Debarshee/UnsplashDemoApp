@@ -14,9 +14,9 @@ protocol HomeTableCellViewModelProtocol {
 
 class HomeTableCellViewModel: HomeTableCellViewModelProtocol {
     
-    private var dataSource: TopicPhoto
+    private var dataSource: PhotoModel
     
-    init(dataSource: TopicPhoto) {
+    init(dataSource: PhotoModel) {
         self.dataSource = dataSource
     }
     
@@ -25,6 +25,6 @@ class HomeTableCellViewModel: HomeTableCellViewModelProtocol {
     }
     
     var name: String {
-        "\(dataSource.user?.firstName ?? "") \(dataSource.user?.lastName ?? "")"
+        self.dataSource.user?.name ?? ""
     }
 }

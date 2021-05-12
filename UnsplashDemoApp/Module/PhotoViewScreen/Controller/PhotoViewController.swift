@@ -18,6 +18,7 @@ class PhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        photoViewViewModel?.getPhotoData()
         photoImageView.downloadImage(with: photoViewViewModel?.photoImage)
         userButton.setTitle(photoViewViewModel?.photoUser, for: .normal)
     }
@@ -35,6 +36,9 @@ class PhotoViewController: UIViewController {
     @IBAction private func photoInfoButtonClicked(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let photoInfoViewController = storyboard.instantiateViewController(withIdentifier: "PhotoInfoViewController") as? PhotoInfoViewController else { return }
+        guard let photoData = photoViewViewModel?.photo else { return }
+        let photo = PhotoViewViewModel(photoData: photoData)
+        photoInfoViewController.photoViewModel = photo
         self.present(photoInfoViewController, animated: true, completion: nil)
     }
 }
