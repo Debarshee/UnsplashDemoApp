@@ -49,15 +49,15 @@ class UserDetailViewController: UIViewController {
         userSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         userSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         if userDetailViewModel?.getUserLocation() == "" {
-            userLocationLabel.isHidden = true
-            userLocationImageView.isHidden = true
+            userLocationLabel.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            userLocationImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         } else {
             userLocationLabel.text = userDetailViewModel?.getUserLocation()
         }
         
         if userDetailViewModel?.getUserLink() == "" {
-            userLinkLabel.isHidden = true
-            userLinkImageView.isHidden = true
+            userLinkLabel.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            userLinkImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         } else {
             userLinkLabel.text = userDetailViewModel?.getUserLink()
         }

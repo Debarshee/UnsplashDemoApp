@@ -128,11 +128,7 @@ class PhotoViewViewModel: PhotoViewViewModelProtocol {
         router.request(PhotoApi.photoInfo(id: photoId)) { (result: Result<PhotoModel, AppError>) in
             switch result {
             case .success(let data):
-//                guard let userData = data.user else {
-//                    fatalError("Invalid user data")
-//                }
                 self.photoData = data
-                // self.userData = userData
             
             case .failure(let error):
                 print(error)

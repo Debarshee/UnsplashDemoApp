@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         topicCollectionView.backgroundColor = .clear
+        self.showWelcomeScreen()
         homeViewModel.fetchTopicPhotos(for: "bo8jQKTaE0Y")
         homeViewModel.fetchTopicData()
     }
@@ -43,6 +44,12 @@ class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let reviewViewController = storyboard.instantiateViewController(withIdentifier: "ReviewViewController") as? ReviewViewController else { return }
         self.present(reviewViewController, animated: true, completion: nil)
+    }
+    
+    private func showWelcomeScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? ReviewViewController else { return }
+        self.present(welcomeViewController, animated: true, completion: nil)
     }
 }
 

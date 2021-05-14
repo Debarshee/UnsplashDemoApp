@@ -40,7 +40,7 @@ struct UnsplashUser: Decodable {
     var photos: [UnsplashUserPhotos]?
     
     enum CodingKeys: String, CodingKey {
-        case id, username, name, bio, links, photos
+        case id, username, name, bio, links, photos, location
         case updatedAt = "updated_at"
         case firstName = "first_name"
         case lastName = "last_name"
