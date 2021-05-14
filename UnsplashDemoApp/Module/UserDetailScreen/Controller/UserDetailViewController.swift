@@ -22,6 +22,7 @@ class UserDetailViewController: UIViewController {
     @IBOutlet private weak var userTableView: UITableView! {
         didSet {
             self.userTableView.dataSource = self
+            self.userTableView.register(UINib(nibName: UserCollectionTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: UserCollectionTableViewCell.identifier)
         }
     }
     
@@ -84,20 +85,39 @@ class UserDetailViewController: UIViewController {
     }
 }
 
+// MARK: - Table View DataSource
 extension UserDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        userDetailViewModel?.numberOfRowsIn(section: section) ?? 0
+        switch userSegmentControl.selectedSegmentIndex {
+        case 2:
+            return userDetailViewModel?.numberOfRowsForCollectionIn(section: section) ?? 0
+            
+        default:
+            return userDetailViewModel?.numberOfRowsIn(section: section) ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier) as? UserTableViewCell else {
-            fatalError("Failed to dequeue the cell")
+        print(userSegmentControl.selectedSegmentIndex)
+        if userSegmentControl.selectedSegmentIndex == 2 {
+            guard let data = userDetailViewModel?.collectionDataForCell(at: indexPath.row) else {
+                fatalError("Failed to get data")
+            }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: UserCollectionTableViewCell.identifier) as? UserCollectionTableViewCell else {
+                fatalError("Failed to dequeue the cell")
+            }
+            cell.configure(configurator: data)
+            return cell
+        } else {
+            guard let data = userDetailViewModel?.dataForCell(at: indexPath.row) else {
+                fatalError("Failed to get data")
+            }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier) as? UserTableViewCell else {
+                fatalError("Failed to dequeue the cell")
+            }
+            cell.configure(configurator: data)
+            return cell
         }
-        guard let data = userDetailViewModel?.dataForCell(at: indexPath.row) else {
-            fatalError("Failed to get data")
-        }
-        cell.configure(configurator: data)
-        return cell
     }
 }
 

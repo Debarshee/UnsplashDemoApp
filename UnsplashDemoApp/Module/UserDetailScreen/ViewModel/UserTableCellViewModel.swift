@@ -13,13 +13,13 @@ protocol UserTableCellViewModelProtocol {
 
 class UserTableCellViewModel: UserTableCellViewModelProtocol {
     
-    private var dataSource: UserDetail
+    private var dataSource: PhotoModel
     
-    init(dataSource: UserDetail) {
+    init(dataSource: PhotoModel) {
         self.dataSource = dataSource
     }
     
     var photoUrl: String {
-        dataSource.userImage ?? ""
+        dataSource.urls?.small ?? ""
     }
 }

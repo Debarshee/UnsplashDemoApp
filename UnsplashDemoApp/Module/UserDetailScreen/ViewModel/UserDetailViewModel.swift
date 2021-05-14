@@ -15,8 +15,8 @@ class UserDetailViewModel {
     
     // MARK: - Properties
     let router = Router<PhotoApi>()
-    private var userDataSource: PhotoModel
     weak var delegate: UserDetailViewModelDelegate?
+    private var userDataSource: UnsplashUser
     
     private var dataSource: [UserTableCellViewModel] {
         didSet {
@@ -24,35 +24,42 @@ class UserDetailViewModel {
         }
     }
     
+    private var collectionDataSource: [UserCollectionTableViewCellViewModel] {
+        didSet {
+            self.delegate?.reloadTableData()
+        }
+    }
+    
     // MARK: - Initializers
-    init(userDataSource: PhotoModel) {
+    init(userDataSource: UnsplashUser) {
         self.userDataSource = userDataSource
         self.dataSource = []
+        self.collectionDataSource = []
     }
     
     // MARK: - Public Functions
     func getUserFullName() -> String {
-        self.userDataSource.user?.name ?? ""
+        self.userDataSource.name ?? ""
     }
     
     func getUserImage() -> String {
-        self.userDataSource.urls?.small ?? ""
+        self.userDataSource.photos?[0].urls?.small ?? ""
     }
     
     func getUserLocation() -> String {
-        self.userDataSource.user?.location ?? ""
+        self.userDataSource.location ?? ""
     }
     
     func getUserLink() -> String {
-        self.userDataSource.user?.portfolioUrl ?? ""
+        self.userDataSource.portfolioUrl ?? ""
     }
     
     func getUserProfileImage() -> String {
-        self.userDataSource.user?.profileImage?.medium ?? ""
+        self.userDataSource.profileImage?.small ?? ""
     }
     
     func getUsername() -> String {
-        self.userDataSource.user?.username ?? ""
+        self.userDataSource.username ?? ""
     }
     
     func getUserPhotos() {
@@ -60,13 +67,7 @@ class UserDetailViewModel {
             switch result {
             case .success(let data):
                 self.dataSource.removeAll()
-                self.dataSource.append(contentsOf: data.compactMap({ item -> UserTableCellViewModel? in
-                    let userDetail = UserDetail(userImage: item.urls?.small ?? "",
-                                                userFullName: self.getUserFullName(),
-                                                imageTitle: item.description ?? item.altDescription ?? "",
-                                                imageOwnerName: item.user?.name ?? "")
-                    return UserTableCellViewModel(dataSource: userDetail)
-                }))
+                self.dataSource.append(contentsOf: data.compactMap { UserTableCellViewModel(dataSource: $0) })
                 
             case .failure(let error):
                 print(error)
@@ -75,24 +76,10 @@ class UserDetailViewModel {
     }
     
     func getUserCollections() {
-        router.request(PhotoApi.userCollection(username: getUsername())) { (result: Result<[Photo], AppError>) in
+        router.request(PhotoApi.userCollection(username: getUsername())) { (result: Result<[PhotoModelUserCollection], AppError>) in
             switch result {
             case .success(let data):
-                self.dataSource.removeAll()
-                for items in data {
-                    let filteredData = items.tags?.filter { item -> Bool in
-                       item.source != nil
-                    }
-                    guard let newFilteredData = filteredData else { return }
-                    
-                    self.dataSource.append(contentsOf: newFilteredData.compactMap({ item -> UserTableCellViewModel? in
-                        let userDetail = UserDetail(userImage: item.source?.coverPhoto?.urls?.small,
-                                                    userFullName: self.getUserFullName(),
-                                                    imageTitle: item.source?.coverPhoto?.description ?? item.source?.coverPhoto?.altDescription,
-                                                    imageOwnerName: item.source?.coverPhoto?.user?.name)
-                        return UserTableCellViewModel(dataSource: userDetail)
-                    }))
-                }
+                self.collectionDataSource.append(contentsOf: data.compactMap { UserCollectionTableViewCellViewModel(dataSource: $0) })
             
             case .failure(let error):
                 print(error)
@@ -104,14 +91,9 @@ class UserDetailViewModel {
         router.request(PhotoApi.userLikes(username: getUsername())) { (result: Result<[PhotoModel], AppError>) in
             switch result {
             case .success(let data):
+                print(self.getUsername())
                 self.dataSource.removeAll()
-                self.dataSource.append(contentsOf: data.compactMap({ item -> UserTableCellViewModel? in
-                    let userDetail = UserDetail(userImage: item.urls?.small ?? "",
-                                                userFullName: self.getUserFullName(),
-                                                imageTitle: item.description ?? item.altDescription ?? "",
-                                                imageOwnerName: item.user?.name ?? "")
-                    return UserTableCellViewModel(dataSource: userDetail)
-                }))
+                self.dataSource.append(contentsOf: data.compactMap { UserTableCellViewModel(dataSource: $0) })
             
             case .failure(let error):
                 print(error)
@@ -125,5 +107,13 @@ class UserDetailViewModel {
     
     func dataForCell(at index: Int) -> UserTableCellViewModel {
         self.dataSource[index]
+    }
+    
+    func numberOfRowsForCollectionIn(section: Int) -> Int {
+        self.collectionDataSource.count
+    }
+    
+    func collectionDataForCell(at index: Int) -> UserCollectionTableViewCellViewModel {
+        self.collectionDataSource[index]
     }
 }

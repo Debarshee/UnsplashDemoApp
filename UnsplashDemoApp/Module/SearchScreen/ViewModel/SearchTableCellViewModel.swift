@@ -14,9 +14,9 @@ protocol SearchTableCellViewModelProtocol {
 
 class SearchTableCellViewModel: SearchTableCellViewModelProtocol {
     
-    private var dataSource: TopicPhoto
+    private var dataSource: PhotoModel
     
-    init(dataSource: TopicPhoto) {
+    init(dataSource: PhotoModel) {
         self.dataSource = dataSource
     }
     

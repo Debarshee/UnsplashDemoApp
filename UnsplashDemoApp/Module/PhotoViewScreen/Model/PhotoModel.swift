@@ -22,15 +22,15 @@ struct PhotoModel: Decodable {
     var links: PhotoModelLinks
     // "categories":[],
     var likes: Int?
-    var likedByUser: Bool
+    // var likedByUser: Bool
     var currentUserCollections: [PhotoModelUserCollection]?
     // "sponsorship":null,
-    var user: PhotoModelUser?
+    var user: UnsplashUser?
     var exif: PhotoModelExtraInfo?
     var location: PhotoModelLocation?
     var meta: PhotoModelMeta?
     var tags: [PhotoModelTags]?
-    var relatedCollections: PhotoModelRelatedCollections?
+    // var relatedCollections: PhotoModelRelatedCollections?
     var views: Int?
     var downloads: Int?
     
@@ -41,9 +41,9 @@ struct PhotoModel: Decodable {
         case promotedAt = "promoted_at"
         case blurHash = "blur_hash"
         case altDescription = "alt_description"
-        case likedByUser = "liked_by_user"
+        // case likedByUser = "liked_by_user"
         case currentUserCollections = "current_user_collections"
-        case relatedCollections = "related_collections"
+        // case relatedCollections = "related_collections"
     }
 }
 
@@ -73,80 +73,25 @@ struct PhotoModelLinks: Decodable {
 }
 
 struct PhotoModelUserCollection: Decodable {
-    var id: Int?
+    var id: String?
     var title: String?
     var publishedAt: String?
     var lastCollectedAt: String?
     var updatedAt: String?
-    // var cover_photo: null,
-    // "user": null
+    var coverPhoto: PhotoModelCoverPhoto?
+    var previewPhotos: [PhotoModelPreviewPhoto]?
+    var user: UnsplashUser?
+    var totalPhotos: Int?
+    var tags: [PhotoModelTags]?
+    
     enum CodingKeys: String, CodingKey {
-        case id, title
+        case id, title, user, tags
         case publishedAt = "published_at"
         case lastCollectedAt = "last_collected_at"
         case updatedAt = "updated_at"
-    }
-}
-
-struct PhotoModelUser: Decodable {
-    var id: String?
-    var updatedAt: String?
-    var username: String?
-    var name: String?
-    var firstName: String?
-    var lastName: String?
-    var twitterUsername: String?
-    var portfolioUrl: String?
-    var bio: String?
-    var location: String?
-    var links: PhotoModelUserLinks?
-    var profileImage: PhotoModelUserProfileImage?
-    var instagramUsername: String?
-    var totalCollections: Int?
-    var totalLikes: Int?
-    var totalPhotos: Int?
-    var acceptedTos: Bool
-    var forHire: Bool
-    
-    enum CodingKeys: String, CodingKey {
-        case id, username, name, bio, location, links
-        case updatedAt = "updated_at"
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case twitterUsername = "twitter_username"
-        case portfolioUrl = "portfolio_url"
-        case profileImage = "profile_image"
-        case instagramUsername = "instagram_username"
-        case totalCollections = "total_collections"
-        case totalLikes = "total_likes"
+        case coverPhoto = "cover_photo"
+        case previewPhotos = "preview_photos"
         case totalPhotos = "total_photos"
-        case acceptedTos = "accepted_tos"
-        case forHire = "for_hire"
-    }
-}
-
-struct PhotoModelUserLinks: Decodable {
-    var userLink: String?
-    var html: String?
-    var photos: String?
-    var likes: String?
-    var portfolio: String?
-    var following: String?
-    var followers: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case html, photos, likes, portfolio, following, followers
-        case userLink = "self"
-    }
-}
-
-struct PhotoModelUserProfileImage: Decodable {
-    var small: String?
-    var medium: String?
-    var large: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case small, medium, large
     }
 }
 
@@ -376,16 +321,17 @@ struct PhotoModelCoverPhotoUserProfileImage: Decodable {
     }
 }
 
-struct PhotoModelRelatedCollections: Decodable {
-    var total: Int?
-    var type: String?
-    // var results: [PhotoModelRelatedCollectionResults]?
+struct PhotoModelPreviewPhoto: Decodable {
+    var id: String?
+    var createdAt: String?
+    var updatedAt: String?
+    var blurHash: String?
+    var urls: PhotoModelUrls?
     
     enum CodingKeys: String, CodingKey {
-        case total, type
+        case id, urls
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case blurHash = "blur_hash"
     }
 }
-
-// struct PhotoModelRelatedCollectionResults {
-//
-// }

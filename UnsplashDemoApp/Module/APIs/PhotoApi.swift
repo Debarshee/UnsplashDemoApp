@@ -15,7 +15,10 @@ enum PhotoApi {
     case userCollection(username: String)
     case userLikes(username: String)
     case searchPhotos(searchQuery: String)
+    case searchCollections(searchQuery: String)
+    case searchUsers(searchQuery: String)
     case photoInfo(id: String)
+    case userInfo(username: String)
 }
 
 extension PhotoApi: EndPoint {
@@ -43,8 +46,17 @@ extension PhotoApi: EndPoint {
         case .searchPhotos:
             return "search/photos"
             
+        case .searchCollections:
+            return "search/collections"
+            
+        case .searchUsers:
+            return "search/users"
+            
         case .photoInfo(let id):
             return "photos/\(id)"
+            
+        case .userInfo(let username):
+            return "/users/\(username)"
         }
     }
     
@@ -106,8 +118,34 @@ extension PhotoApi: EndPoint {
                                         "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
                                       ]
             )
+            
+        case .searchCollections(let searchQuery):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: [
+                                        "query": searchQuery,
+                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                      ]
+            )
+            
+        case .searchUsers(let searchQuery):
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: [
+                                        "query": searchQuery,
+                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                      ]
+            )
         
         case .photoInfo:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: [
+                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                      ]
+            )
+            
+        case .userInfo:
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [

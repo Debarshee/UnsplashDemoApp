@@ -40,7 +40,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction private func reviewButtonClicked(_ sender: UIButton) {
-        print("Clicked")
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let reviewViewController = storyboard.instantiateViewController(withIdentifier: "ReviewViewController") as? ReviewViewController else { return }
+        self.present(reviewViewController, animated: true, completion: nil)
     }
 }
 
@@ -64,11 +66,10 @@ extension HomeViewController: UITableViewDataSource {
 // MARK: - TableView Delegate
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = homeViewModel.selectedDataFromTable(at: indexPath.row)
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let photoViewController = storyboard.instantiateViewController(withIdentifier: "PhotoViewController") as? PhotoViewController else { return }
+        let data = homeViewModel.selectedDataFromTable(at: indexPath.row)
         photoViewController.photoViewViewModel = data
-        photoViewController.photoViewViewModel?.photoID = data?.photoID
         self.navigationController?.pushViewController(photoViewController, animated: true)
     }
 }
@@ -88,8 +89,6 @@ extension HomeViewController: UICollectionViewDataSource {
         switch indexPath.row {
         case 0:
             collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
-            cell.layer.borderWidth = 2
-            cell.layer.borderColor = UIColor.gray.cgColor
             return cell
 
         default:

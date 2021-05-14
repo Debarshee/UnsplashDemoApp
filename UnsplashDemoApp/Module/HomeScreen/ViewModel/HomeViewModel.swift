@@ -84,10 +84,10 @@ class HomeViewModel {
     }
     
     func selectedDataFromTable(at index: Int) -> PhotoViewViewModel? {
-//        let data = self.dataSource[index]
-//        let topicPhotoData = PhotoViewViewModel(photoData: data)
-//        return topicPhotoData
-        
         self.dataSource[index]
+    }
+    
+    func getPhotoId(at index: Int) -> String? {
+        self.dataSource[index].photoModelId
     }
 }

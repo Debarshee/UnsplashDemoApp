@@ -21,6 +21,8 @@ class PhotoViewController: UIViewController {
         photoViewViewModel?.getPhotoData()
         photoImageView.downloadImage(with: photoViewViewModel?.photoImage)
         userButton.setTitle(photoViewViewModel?.photoUser, for: .normal)
+        guard let userData = photoViewViewModel?.photoUsername else { return }
+        photoViewViewModel?.getUserData(userName: userData)
     }
     @IBAction private func closeButtonClicked(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -29,7 +31,8 @@ class PhotoViewController: UIViewController {
     @IBAction private func userButtonClicked(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let userDetailViewController = storyboard.instantiateViewController(withIdentifier: "UserDetailViewController") as? UserDetailViewController else { return }
-        userDetailViewController.userDetailViewModel = photoViewViewModel?.passUserData()
+        guard let data = photoViewViewModel?.passUserData() else { return }
+        userDetailViewController.userDetailViewModel = data
         self.navigationController?.pushViewController(userDetailViewController, animated: true)
     }
     

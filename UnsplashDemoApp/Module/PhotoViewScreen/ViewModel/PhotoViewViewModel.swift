@@ -20,12 +20,15 @@ protocol PhotoViewViewModelProtocol {
     var photoISO: String { get }
     var photoLocation: String { get }
     var photoDescription: String { get }
+    var photoModelId: String { get }
+    var photoUsername: String { get }
 }
 
 class PhotoViewViewModel: PhotoViewViewModelProtocol {
     
     private var photoData: PhotoModel
-    var photoID: String?
+    private var userData: UnsplashUser?
+    var photoId: String?
     let router = Router<PhotoApi>()
     
     init(photoData: PhotoModel) {
@@ -91,8 +94,19 @@ class PhotoViewViewModel: PhotoViewViewModelProtocol {
         self.photoData.description ?? self.photoData.altDescription ?? ""
     }
     
+    var photoModelId: String {
+        self.photoData.id ?? ""
+    }
+    
+    var photoUsername: String {
+        self.photoData.user?.username ?? ""
+    }
+    
     func passUserData() -> UserDetailViewModel {
-        UserDetailViewModel(userDataSource: photoData)
+        guard let data = userData else {
+            fatalError("Invalid data")
+        }
+        return UserDetailViewModel(userDataSource: data)
     }
     
     func setAnnotation(on mapView: MKMapView) {
@@ -114,7 +128,23 @@ class PhotoViewViewModel: PhotoViewViewModelProtocol {
         router.request(PhotoApi.photoInfo(id: photoId)) { (result: Result<PhotoModel, AppError>) in
             switch result {
             case .success(let data):
+//                guard let userData = data.user else {
+//                    fatalError("Invalid user data")
+//                }
                 self.photoData = data
+                // self.userData = userData
+            
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func getUserData(userName: String) {
+        router.request(PhotoApi.userInfo(username: userName)) { (result: Result<UnsplashUser, AppError>) in
+            switch result {
+            case .success(let data):
+                self.userData = data
             
             case .failure(let error):
                 print(error)
