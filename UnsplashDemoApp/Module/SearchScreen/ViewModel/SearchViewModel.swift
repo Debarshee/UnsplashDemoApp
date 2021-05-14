@@ -17,6 +17,7 @@ class SearchViewModel {
     weak var delegate: SearchViewModelDelegate?
     let router = Router<PhotoApi>()
     private var userData: UnsplashUser?
+    var selectedUsername: String?
     private var tableDataSource: [SearchTableCellViewModel] {
         didSet {
             self.delegate?.reloadTableData()
@@ -82,8 +83,8 @@ class SearchViewModel {
     }
     
     // MARK: - Get User data
-    func getUserData(at index: Int) {
-        let userName = self.usersDataSource[index].username
+    private func getUserData(userName: String) {
+        let name = userName
         router.request(PhotoApi.userInfo(username: userName)) { (result: Result<UnsplashUser, AppError>) in
             switch result {
             case .success(let data):
@@ -97,8 +98,14 @@ class SearchViewModel {
     }
     
     // MARK: - Pass User data to User Detail Model
-    func passUserData() -> UserDetailViewModel {
-        guard let data = userData else {
+    func passUserData(at index: Int) -> UserDetailViewModel {
+        let workItem = DispatchWorkItem {
+            let username = self.usersDataSource[index].username
+            self.getUserData(userName: username)
+        }
+        DispatchQueue.global().async(execute: workItem)
+        workItem.wait()
+        guard let data = self.userData else {
             fatalError("Invalid data")
         }
         return UserDetailViewModel(userDataSource: data)

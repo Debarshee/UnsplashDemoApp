@@ -41,10 +41,19 @@ class SearchUserTableCellViewModel: SearchUserTableCellViewModelProtocol {
     }
     
     var secondSubImage: String {
-        dataSource.photos?[1].urls?.small ?? ""
+        
+        if (dataSource.photos?.count ?? 0) > 1 {
+            return dataSource.photos?[1].urls?.small ?? ""
+        } else {
+            return dataSource.photos?[0].urls?.small ?? ""
+        }
     }
     
     var thirdSubImage: String {
-        dataSource.photos?[2].urls?.small ?? ""
+        if (dataSource.photos?.count ?? 0) > 1 {
+            return dataSource.photos?[2].urls?.small ?? ""
+        } else {
+            return dataSource.photos?[0].urls?.small ?? ""
+        }
     }
 }

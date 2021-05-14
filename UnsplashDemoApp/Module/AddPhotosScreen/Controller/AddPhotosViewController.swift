@@ -11,7 +11,6 @@ class AddPhotosViewController: UIViewController {
 
     @IBOutlet private weak var uploadedImageView: UIImageView!
     @IBOutlet private weak var uploadImageButton: UIButton!
-    @IBOutlet private weak var defaultPhotoImageView: UIImageView!
     @IBOutlet private weak var blogCollectionView: UICollectionView! {
         didSet {
             self.blogCollectionView.dataSource = self
@@ -23,7 +22,6 @@ class AddPhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.getCollectionData()
-        defaultPhotoImageView.image = UIImage(systemName: "photo.fill")
     }
 }
 
