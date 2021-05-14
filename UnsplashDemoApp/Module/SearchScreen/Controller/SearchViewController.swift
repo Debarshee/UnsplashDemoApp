@@ -105,10 +105,25 @@ extension SearchViewController: UITableViewDataSource {
 // MARK: - Table Delegate
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let userDetailViewController = storyboard.instantiateViewController(withIdentifier: "UserDetailViewController") as? UserDetailViewController else { return }
-        let data = searchViewModel.usersDataForCell(at: indexPath.row)
-        self.navigationController?.pushViewController(userDetailViewController, animated: true)
+        switch searchSegmentedControl.selectedSegmentIndex {
+        case 1:
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            guard let userDetailViewController = storyboard.instantiateViewController(withIdentifier: "UserDetailViewController") as? UserDetailViewController else { return }
+            searchViewModel.getUserData(at: indexPath.row)
+//            let data = searchViewModel.passUserData()
+//            userDetailViewController.userDetailViewModel = data
+//            self.navigationController?.pushViewController(userDetailViewController, animated: true)
+        
+        case 2:
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            guard let collectionsDisplayViewController = storyboard.instantiateViewController(withIdentifier: "CollectionsDisplayViewController") as? CollectionsDisplayViewController else { return }
+            let data = searchViewModel.collectionDataForCell(at: indexPath.row)
+            collectionsDisplayViewController.selectedUsername = data.userCollectionUsername
+            self.navigationController?.pushViewController(collectionsDisplayViewController, animated: true)
+            
+        default:
+            break
+        }
     }
 }
 

@@ -12,6 +12,7 @@ protocol UserCollectionTableViewCellViewModelProtocol {
     var firstSubImage: String { get }
     var secondSubImage: String { get }
     var userCollectionTitle: String { get }
+    var userCollectionUsername: String { get }
     var userCollectionPhotoNumber: String { get }
     var userCollectionTag1: String { get }
     var userCollectionTag2: String { get }
@@ -83,5 +84,9 @@ class UserCollectionTableViewCellViewModel {
             tag1 = self.dataSource.tags?[2].title ?? ""
         }
         return tag1
+    }
+    
+    var userCollectionUsername: String {
+        self.dataSource.user?.username ?? ""
     }
 }

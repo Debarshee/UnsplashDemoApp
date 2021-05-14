@@ -20,7 +20,7 @@ class SearchUsersTableViewCell: UITableViewCell, ViewReusable {
         profileImageView.layer.cornerRadius = profileImageView.layer.frame.width / 2
         profileImageView.clipsToBounds = true
         userFullNameLabel.text = configurator.name
-        usernameLabel.text = configurator.username
+        usernameLabel.text = "@\(configurator.username)"
         firstImageView.downloadImage(with: configurator.firstSubImage)
         secondImageView.downloadImage(with: configurator.secondSubImage)
         thirdImageView.downloadImage(with: configurator.thirdSubImage)

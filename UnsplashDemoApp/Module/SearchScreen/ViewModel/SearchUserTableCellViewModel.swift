@@ -29,7 +29,7 @@ class SearchUserTableCellViewModel: SearchUserTableCellViewModelProtocol {
     }
     
     var username: String {
-        "@\(dataSource.username ?? "")"
+        dataSource.username ?? ""
     }
     
     var profileImage: String {

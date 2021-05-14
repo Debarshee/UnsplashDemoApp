@@ -1095,6 +1095,63 @@
             </objects>
             <point key="canvasLocation" x="5577" y="-58"/>
         </scene>
+        <!--Collections Display View Controller-->
+        <scene sceneID="K0z-ZZ-M5X">
+            <objects>
+                <viewController storyboardIdentifier="CollectionsDisplayViewController" id="xhw-D3-KwR" customClass="CollectionsDisplayViewController" customModule="UnsplashDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ciG-qb-gPU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fwv-Ep-Bth">
+                                <rect key="frame" x="0.0" y="-70" width="414" height="932"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectionsDisplayTableViewCell" rowHeight="269" id="8Ao-cb-DMr" customClass="CollectionsDisplayTableViewCell" customModule="UnsplashDemoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="269"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Ao-cb-DMr" id="dWP-EV-mPW">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="269"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f0x-N0-9DI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="269"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="269" id="kCh-rH-HTb"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f0x-N0-9DI" firstAttribute="leading" secondItem="dWP-EV-mPW" secondAttribute="leading" id="Bhf-bO-7WC"/>
+                                                <constraint firstAttribute="trailing" secondItem="f0x-N0-9DI" secondAttribute="trailing" id="Ibs-Ew-k21"/>
+                                                <constraint firstAttribute="bottom" secondItem="f0x-N0-9DI" secondAttribute="bottom" id="NGs-tQ-32J"/>
+                                                <constraint firstItem="f0x-N0-9DI" firstAttribute="top" secondItem="dWP-EV-mPW" secondAttribute="top" id="v9B-KU-gLY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="photoImageView" destination="f0x-N0-9DI" id="aTN-hD-pAK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MaF-lb-EbM"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstItem="Fwv-Ep-Bth" firstAttribute="trailing" secondItem="MaF-lb-EbM" secondAttribute="trailing" id="DS1-Gq-vAE"/>
+                            <constraint firstItem="Fwv-Ep-Bth" firstAttribute="bottom" secondItem="MaF-lb-EbM" secondAttribute="bottom" id="MsM-gO-xlJ"/>
+                            <constraint firstItem="Fwv-Ep-Bth" firstAttribute="top" secondItem="ciG-qb-gPU" secondAttribute="top" constant="-70" id="Sdf-oM-Odj"/>
+                            <constraint firstItem="Fwv-Ep-Bth" firstAttribute="leading" secondItem="MaF-lb-EbM" secondAttribute="leading" id="duh-hC-qDo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionPhotoTableView" destination="Fwv-Ep-Bth" id="bB8-R5-EwZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yx2-vy-unw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6444.9275362318849" y="-744.64285714285711"/>
+        </scene>
         <!--User Detail View Controller-->
         <scene sceneID="D4M-8R-Nze">
             <objects>
