@@ -10,7 +10,7 @@ It is a replica of Unsplash App
 5) Implemented NSCache library to store Images in the local cache 
 
 <p align="center">
-<img src="https://i.imgur.com/GhiIf4e.gifv" width="180" height="320"> 
+<img src="https://i.imgur.com/GhiIf4e.gif" width="180" height="320"> 
 </p>
 
 ## HomeScreen
