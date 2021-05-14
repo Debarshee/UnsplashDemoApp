@@ -49,6 +49,7 @@
 		572D102D264EE5F400B90CFC /* CollectionsDisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572D102C264EE5F400B90CFC /* CollectionsDisplayViewModel.swift */; };
 		572D1030264EE72500B90CFC /* CollectionsDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572D102F264EE72500B90CFC /* CollectionsDisplayTableViewCell.swift */; };
 		572D1032264EE77200B90CFC /* CollectionDisplayCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572D1031264EE77200B90CFC /* CollectionDisplayCellViewModel.swift */; };
+		572D1035264F11F500B90CFC /* Simulator Screen Recording - iPhone 11 Pro Max - 2021-05-14 at 15.56.41.gif in Resources */ = {isa = PBXBuildFile; fileRef = 572D1034264F11F400B90CFC /* Simulator Screen Recording - iPhone 11 Pro Max - 2021-05-14 at 15.56.41.gif */; };
 		57305A2B264593D400552FC8 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A2A264593D400552FC8 /* HomeTableViewCell.swift */; };
 		57305A2D2645964100552FC8 /* HomeTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A2C2645964100552FC8 /* HomeTableCellViewModel.swift */; };
 		57305A2F2645A98D00552FC8 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A2E2645A98C00552FC8 /* Topic.swift */; };
@@ -115,6 +116,7 @@
 		572D102C264EE5F400B90CFC /* CollectionsDisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsDisplayViewModel.swift; sourceTree = "<group>"; };
 		572D102F264EE72500B90CFC /* CollectionsDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsDisplayTableViewCell.swift; sourceTree = "<group>"; };
 		572D1031264EE77200B90CFC /* CollectionDisplayCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDisplayCellViewModel.swift; sourceTree = "<group>"; };
+		572D1034264F11F400B90CFC /* Simulator Screen Recording - iPhone 11 Pro Max - 2021-05-14 at 15.56.41.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Simulator Screen Recording - iPhone 11 Pro Max - 2021-05-14 at 15.56.41.gif"; sourceTree = "<group>"; };
 		57305A2A264593D400552FC8 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		57305A2C2645964100552FC8 /* HomeTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCellViewModel.swift; sourceTree = "<group>"; };
 		57305A2E2645A98C00552FC8 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 		5726EA162642A07800091D6B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				572D1033264F119600B90CFC /* Github Source */,
 				5726EA0826429FC800091D6B /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -507,6 +510,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		572D1033264F119600B90CFC /* Github Source */ = {
+			isa = PBXGroup;
+			children = (
+				572D1034264F11F400B90CFC /* Simulator Screen Recording - iPhone 11 Pro Max - 2021-05-14 at 15.56.41.gif */,
+			);
+			path = "Github Source";
+			sourceTree = "<group>";
+		};
 		5796FC8C2649B40100C88E8F /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,6 +673,7 @@
 				5726EA0926429FC800091D6B /* Assets.xcassets in Resources */,
 				5796FCB6264C775000C88E8F /* UserCollectionTableViewCell.xib in Resources */,
 				5726EA0726429FA400091D6B /* Main.storyboard in Resources */,
+				572D1035264F11F500B90CFC /* Simulator Screen Recording - iPhone 11 Pro Max - 2021-05-14 at 15.56.41.gif in Resources */,
 				5716BA3B264D98CA00B4869B /* SearchUsersTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
