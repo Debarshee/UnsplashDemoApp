@@ -14,6 +14,7 @@ protocol SearchUserTableCellViewModelProtocol {
     var firstSubImage: String { get }
     var secondSubImage: String { get }
     var thirdSubImage: String { get }
+    var user: UnsplashUser { get }
 }
 
 class SearchUserTableCellViewModel: SearchUserTableCellViewModelProtocol {
@@ -22,6 +23,10 @@ class SearchUserTableCellViewModel: SearchUserTableCellViewModelProtocol {
     
     init(dataSource: UnsplashUser) {
         self.dataSource = dataSource
+    }
+    
+    var user: UnsplashUser {
+        dataSource
     }
     
     var name: String {

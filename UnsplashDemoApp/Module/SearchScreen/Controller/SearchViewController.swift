@@ -109,8 +109,9 @@ extension SearchViewController: UITableViewDelegate {
         case 1:
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             guard let userDetailViewController = storyboard.instantiateViewController(withIdentifier: "UserDetailViewController") as? UserDetailViewController else { return }
-            let data = searchViewModel.passUserData(at: indexPath.row)
-            userDetailViewController.userDetailViewModel = data
+            let data = searchViewModel.usersDataForCell(at: indexPath.row)
+            let user = searchViewModel.passUserData(userData: data.user)
+            userDetailViewController.userDetailViewModel = user
             self.navigationController?.pushViewController(userDetailViewController, animated: true)
         
         case 2:
