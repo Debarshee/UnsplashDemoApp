@@ -84,6 +84,11 @@ class SearchViewModel {
     }
     
     // MARK: - Pass User Data to User Detail Screen View Model
+    func passPhotoData(photoData: PhotoModel) -> PhotoDisplayViewModel {
+        PhotoDisplayViewModel(photoData: photoData)
+    }
+    
+    // MARK: - Pass User Data to User Detail Screen View Model
     func passUserData(userData: UnsplashUser) -> UserDetailViewModel {
         UserDetailViewModel(userDataSource: userData)
     }
@@ -98,7 +103,7 @@ class SearchViewModel {
         self.photoDataSource.count
     }
     
-    func listDataForTable(at index: Int) -> SearchTableCellViewModel {
+    func photoDataForCell(at index: Int) -> SearchTableCellViewModel {
         self.photoDataSource[index]
     }
     

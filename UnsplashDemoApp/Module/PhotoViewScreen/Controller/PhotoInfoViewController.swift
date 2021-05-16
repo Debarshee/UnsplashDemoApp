@@ -46,10 +46,11 @@ class PhotoInfoViewController: UIViewController {
             return
         }
         if photoLocationText.isEmpty {
-            locationLabel.removeFromSuperview()
-            photoDescriptionLabel.removeFromSuperview()
-            locationIconImageView.removeFromSuperview()
-            mapView.removeFromSuperview()
+            locationLabel.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            photoDescriptionLabel.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            locationIconImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            mapView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            mapView.bottomAnchor.constraint(equalTo: locationLabel.topAnchor, constant: 0).isActive = true
         } else {
             photoDescriptionLabel.text = photoViewModel?.photoDescription
             locationLabel.text = photoLocationText

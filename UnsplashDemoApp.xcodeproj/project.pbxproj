@@ -56,6 +56,7 @@
 		57305A312645B34E00552FC8 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A302645B34E00552FC8 /* HomeCollectionViewCell.swift */; };
 		57305A332645CA3B00552FC8 /* HomeCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A322645CA3B00552FC8 /* HomeCollectionCellViewModel.swift */; };
 		573D3F1726472B5A00E8C03F /* TopicPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573D3F1626472B5A00E8C03F /* TopicPhoto.swift */; };
+		5787966F2651A94100F43957 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787966E2651A94100F43957 /* LoginViewController.swift */; };
 		5796FC932649B8C500C88E8F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796FC922649B8C500C88E8F /* SearchViewController.swift */; };
 		5796FC952649B8D600C88E8F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796FC942649B8D600C88E8F /* SearchViewModel.swift */; };
 		5796FC972649C2B700C88E8F /* SearchPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796FC962649C2B700C88E8F /* SearchPhoto.swift */; };
@@ -123,6 +124,7 @@
 		57305A302645B34E00552FC8 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		57305A322645CA3B00552FC8 /* HomeCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		573D3F1626472B5A00E8C03F /* TopicPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicPhoto.swift; sourceTree = "<group>"; };
+		5787966E2651A94100F43957 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5796FC922649B8C500C88E8F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5796FC942649B8D600C88E8F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		5796FC962649C2B700C88E8F /* SearchPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhoto.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 		5726EA172642A08700091D6B /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				578796692651A8EE00F43957 /* Login View Screen */,
 				572D1025264EDEE000B90CFC /* CollectionViewScreen */,
 				5716BA2D264D693600B4869B /* ReviewViewController */,
 				5796FCA4264AB3BB00C88E8F /* AddPhotosScreen */,
@@ -516,6 +519,46 @@
 				572D1034264F11F400B90CFC /* Simulator Screen Recording - iPhone 11 Pro Max - 2021-05-14 at 15.56.41.gif */,
 			);
 			path = "Github Source";
+			sourceTree = "<group>";
+		};
+		578796692651A8EE00F43957 /* Login View Screen */ = {
+			isa = PBXGroup;
+			children = (
+				5787966D2651A91000F43957 /* View Model */,
+				5787966C2651A90A00F43957 /* View */,
+				5787966B2651A90400F43957 /* Model */,
+				5787966A2651A8FA00F43957 /* Controller */,
+			);
+			path = "Login View Screen";
+			sourceTree = "<group>";
+		};
+		5787966A2651A8FA00F43957 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5787966E2651A94100F43957 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5787966B2651A90400F43957 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5787966C2651A90A00F43957 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5787966D2651A91000F43957 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		5796FC8C2649B40100C88E8F /* SearchScreen */ = {
@@ -734,6 +777,7 @@
 				5796FC952649B8D600C88E8F /* SearchViewModel.swift in Sources */,
 				571531DC2648BB66000594E8 /* UserDetailViewModel.swift in Sources */,
 				5796FCB4264AEADB00C88E8F /* PhotoModel.swift in Sources */,
+				5787966F2651A94100F43957 /* LoginViewController.swift in Sources */,
 				5726EA0426429FA400091D6B /* HomeViewController.swift in Sources */,
 				571531DE264910ED000594E8 /* UserTableViewCell.swift in Sources */,
 				572D102D264EE5F400B90CFC /* CollectionsDisplayViewModel.swift in Sources */,

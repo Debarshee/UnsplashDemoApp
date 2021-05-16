@@ -125,8 +125,14 @@ extension UserDetailViewController: UITableViewDataSource {
 // MARK: - Table View Delegate
 extension UserDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let collectionsDisplayViewController = storyboard.instantiateViewController(withIdentifier: "CollectionsDisplayViewController") as? CollectionsDisplayViewController else { return }
+        switch userSegmentControl.selectedSegmentIndex {
+        case 2:
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            guard let collectionsDisplayViewController = storyboard.instantiateViewController(withIdentifier: "CollectionsDisplayViewController") as? CollectionsDisplayViewController else { return }
+            
+        default:
+            break
+        }
     }
 }
 

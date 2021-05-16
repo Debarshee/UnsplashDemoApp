@@ -91,7 +91,7 @@ extension SearchViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell else {
                 fatalError("Failed to dequeue the cell")
             }
-            let data = searchViewModel.listDataForTable(at: indexPath.row)
+            let data = searchViewModel.photoDataForCell(at: indexPath.row)
             cell.configure(configurator: data)
             return cell
             
@@ -118,6 +118,14 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch searchSegmentedControl.selectedSegmentIndex {
+        case 0:
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            guard let photoViewController = storyboard.instantiateViewController(withIdentifier: "PhotoViewController") as? PhotoViewController else { return }
+            let data = searchViewModel.photoDataForCell(at: indexPath.row)
+            let photo = searchViewModel.passPhotoData(photoData: data.photo)
+            photoViewController.photoDisplayViewModel = photo
+            self.navigationController?.pushViewController(photoViewController, animated: true)
+            
         case 1:
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             guard let userDetailViewController = storyboard.instantiateViewController(withIdentifier: "UserDetailViewController") as? UserDetailViewController else { return }

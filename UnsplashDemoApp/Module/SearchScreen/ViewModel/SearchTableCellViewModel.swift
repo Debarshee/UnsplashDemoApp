@@ -10,6 +10,7 @@ import Foundation
 protocol SearchTableCellViewModelProtocol {
     var image: String { get }
     var title: String { get }
+    var photo: PhotoModel { get }
 }
 
 class SearchTableCellViewModel: SearchTableCellViewModelProtocol {
@@ -26,5 +27,9 @@ class SearchTableCellViewModel: SearchTableCellViewModelProtocol {
     
     var title: String {
         dataSource.description ?? dataSource.altDescription ?? ""
+    }
+    
+    var photo: PhotoModel {
+        dataSource
     }
 }

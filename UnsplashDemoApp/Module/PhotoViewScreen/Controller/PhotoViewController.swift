@@ -13,6 +13,10 @@ class PhotoViewController: UIViewController {
     @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var userButton: UIButton!
     @IBOutlet private weak var photoInfoButton: UIButton!
+    @IBOutlet private weak var shareButton: UIButton!
+    @IBOutlet private weak var likeButton: UIButton!
+    @IBOutlet private weak var addPhotoToProfileButton: UIButton!
+    @IBOutlet private weak var downloadButton: UIButton!
     
     var photoDisplayViewModel: PhotoDisplayViewModel?
     
@@ -42,6 +46,28 @@ class PhotoViewController: UIViewController {
         guard let photoData = photoDisplayViewModel?.photo else { return }
         let photo = PhotoDisplayViewModel(photoData: photoData)
         photoInfoViewController.photoViewModel = photo
+        photoInfoViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.present(photoInfoViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction private func shareButtonClicked(_ sender: UIButton) {
+    }
+    @IBAction private func likeButtonClicked(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+        guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+        loginViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(loginViewController, animated: true, completion: nil)
+    }
+    @IBAction private func addPhotoToProfileButtonClicked(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+        guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+        loginViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(loginViewController, animated: true, completion: nil)
+    }
+    @IBAction private func downloadButtonClicked(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+        guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+        loginViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.present(loginViewController, animated: true, completion: nil)
     }
 }
