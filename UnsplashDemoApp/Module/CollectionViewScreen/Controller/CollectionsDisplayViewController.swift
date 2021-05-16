@@ -14,28 +14,27 @@ class CollectionsDisplayViewController: UIViewController {
             self.collectionPhotoTableView.dataSource = self
         }
     }
-    lazy var collectionDisplayViewModel = CollectionsDisplayViewModel(delegate: self)
-    var selectedUsername: String?
+    var collectionDisplayViewModel: CollectionsDisplayViewModel?
     
     override func viewDidLoad() {
+        collectionDisplayViewModel?.delegate = self
         super.viewDidLoad()
-        guard let username = selectedUsername else {
-            return
-        }
-        collectionDisplayViewModel.getCollectionPhotos(for: username)
+        collectionDisplayViewModel?.getCollectionPhotos()
     }
 }
 
 extension CollectionsDisplayViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        collectionDisplayViewModel.numberOfRowsForPhotosIn(section: section)
+        collectionDisplayViewModel?.numberOfRowsForPhotosIn(section: section) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionsDisplayTableViewCell.identifier, for: indexPath) as? CollectionsDisplayTableViewCell else {
             fatalError("Failed to dequeue the cell")
         }
-        let data = collectionDisplayViewModel.photoDataForCell(at: indexPath.row)
+        guard let data = collectionDisplayViewModel?.photoDataForCell(at: indexPath.row) else {
+            fatalError("Invalid data")
+        }
         cell.configure(configurator: data)
         return cell
     }

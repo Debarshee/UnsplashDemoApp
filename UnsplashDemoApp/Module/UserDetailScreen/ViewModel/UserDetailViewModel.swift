@@ -91,7 +91,6 @@ class UserDetailViewModel {
         router.request(PhotoApi.userLikes(username: getUsername())) { (result: Result<[PhotoModel], AppError>) in
             switch result {
             case .success(let data):
-                print(self.getUsername())
                 self.dataSource.removeAll()
                 self.dataSource.append(contentsOf: data.compactMap { UserTableCellViewModel(dataSource: $0) })
             

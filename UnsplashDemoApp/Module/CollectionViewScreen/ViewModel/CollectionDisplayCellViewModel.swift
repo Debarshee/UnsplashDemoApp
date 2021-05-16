@@ -9,6 +9,7 @@ import Foundation
 
 protocol CollectionDisplayCellViewModelProtocol {
     var photoImage: String { get }
+    var photoCollectionData: PhotoModelUserCollection { get }
 }
 
 class CollectionDisplayCellViewModel: CollectionDisplayCellViewModelProtocol {
@@ -21,5 +22,9 @@ class CollectionDisplayCellViewModel: CollectionDisplayCellViewModelProtocol {
     
     var photoImage: String {
         dataSource.coverPhoto?.urls?.small ?? ""
+    }
+    
+    var photoCollectionData: PhotoModelUserCollection {
+        dataSource
     }
 }

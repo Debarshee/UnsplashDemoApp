@@ -14,23 +14,24 @@ protocol CollectionsDisplayViewModelDelegate: AnyObject {
 class CollectionsDisplayViewModel {
     
     weak var delegate: CollectionsDisplayViewModelDelegate?
+    private var collectionUsername: String
     let router = Router<PhotoApi>()
-    private var photoDataSource: [CollectionDisplayCellViewModel] {
+    private var collectionDataSource: [CollectionDisplayCellViewModel] {
         didSet {
             self.delegate?.reloadTable()
         }
     }
     
-    init(delegate: CollectionsDisplayViewModelDelegate) {
-        self.delegate = delegate
-        self.photoDataSource = []
+    init(collectionUsername: String) {
+        self.collectionUsername = collectionUsername
+        self.collectionDataSource = []
     }
     
-    func getCollectionPhotos(for userName: String) {
-        router.request(PhotoApi.userCollection(username: userName)) { (result: Result<[PhotoModelUserCollection], AppError>) in
+    func getCollectionPhotos() {
+        router.request(PhotoApi.userCollection(username: collectionUsername)) { (result: Result<[PhotoModelUserCollection], AppError>) in
             switch result {
             case .success(let data):
-                self.photoDataSource.append(contentsOf: data.compactMap { CollectionDisplayCellViewModel(dataSource: $0) })
+                self.collectionDataSource.append(contentsOf: data.compactMap { CollectionDisplayCellViewModel(dataSource: $0) })
             
             case .failure(let error):
                 print(error)
@@ -39,10 +40,10 @@ class CollectionsDisplayViewModel {
     }
     
     func numberOfRowsForPhotosIn(section: Int) -> Int {
-        self.photoDataSource.count
+        self.collectionDataSource.count
     }
     
     func photoDataForCell(at index: Int) -> CollectionDisplayCellViewModel {
-        self.photoDataSource[index]
+        self.collectionDataSource[index]
     }
 }

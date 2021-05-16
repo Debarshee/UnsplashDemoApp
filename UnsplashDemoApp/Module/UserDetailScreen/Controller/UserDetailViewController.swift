@@ -22,6 +22,7 @@ class UserDetailViewController: UIViewController {
     @IBOutlet private weak var userTableView: UITableView! {
         didSet {
             self.userTableView.dataSource = self
+            self.userTableView.delegate = self
             self.userTableView.register(UINib(nibName: UserCollectionTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: UserCollectionTableViewCell.identifier)
         }
     }
@@ -118,6 +119,14 @@ extension UserDetailViewController: UITableViewDataSource {
             cell.configure(configurator: data)
             return cell
         }
+    }
+}
+
+// MARK: - Table View Delegate
+extension UserDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let collectionsDisplayViewController = storyboard.instantiateViewController(withIdentifier: "CollectionsDisplayViewController") as? CollectionsDisplayViewController else { return }
     }
 }
 

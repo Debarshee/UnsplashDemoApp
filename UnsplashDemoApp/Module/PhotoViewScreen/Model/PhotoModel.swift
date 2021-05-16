@@ -20,7 +20,6 @@ struct PhotoModel: Decodable {
     var altDescription: String?
     var urls: PhotoModelUrls?
     var links: PhotoModelLinks
-    // "categories":[],
     var likes: Int?
     // var likedByUser: Bool
     var currentUserCollections: [PhotoModelUserCollection]?
