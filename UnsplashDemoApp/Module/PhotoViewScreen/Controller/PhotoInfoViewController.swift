@@ -29,7 +29,7 @@ class PhotoInfoViewController: UIViewController {
         }
     }
     
-    var photoViewModel: PhotoViewViewModel?
+    var photoViewModel: PhotoDisplayViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

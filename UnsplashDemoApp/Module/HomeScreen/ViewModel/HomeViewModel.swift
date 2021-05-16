@@ -18,7 +18,7 @@ class HomeViewModel {
     
     let router = Router<PhotoApi>()
     
-    private var dataSource: [PhotoViewViewModel]
+    private var dataSource: [PhotoDisplayViewModel]
     
     private var photoDataSource: [HomeTableCellViewModel] {
         didSet {
@@ -59,7 +59,7 @@ class HomeViewModel {
                 self.photoDataSource.removeAll()
                 self.dataSource.removeAll()
                 self.photoDataSource.append(contentsOf: data.compactMap { HomeTableCellViewModel(dataSource: $0) })
-                self.dataSource.append(contentsOf: data.compactMap { PhotoViewViewModel(photoData: $0) })
+                self.dataSource.append(contentsOf: data.compactMap { PhotoDisplayViewModel(photoData: $0) })
                 
             case .failure(let error):
                 print(error)
@@ -83,7 +83,7 @@ class HomeViewModel {
         self.topicDataSource[index]
     }
     
-    func selectedDataFromTable(at index: Int) -> PhotoViewViewModel? {
+    func selectedDataFromTable(at index: Int) -> PhotoDisplayViewModel? {
         self.dataSource[index]
     }
     

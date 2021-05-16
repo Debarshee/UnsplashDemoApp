@@ -76,7 +76,7 @@ extension HomeViewController: UITableViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         guard let photoViewController = storyboard.instantiateViewController(withIdentifier: "PhotoViewController") as? PhotoViewController else { return }
         let data = homeViewModel.selectedDataFromTable(at: indexPath.row)
-        photoViewController.photoViewViewModel = data
+        photoViewController.photoDisplayViewModel = data
         self.navigationController?.pushViewController(photoViewController, animated: true)
     }
 }

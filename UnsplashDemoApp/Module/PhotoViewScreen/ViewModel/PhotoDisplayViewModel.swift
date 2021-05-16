@@ -1,5 +1,5 @@
 //
-//  PhotoViewViewModel.swift
+//  PhotoDisplayViewModel.swift
 //  UnsplashDemoApp
 //
 //  Created by Debarshee on 5/9/21.
@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-protocol PhotoViewViewModelProtocol {
+protocol PhotoDisplayViewModelProtocol {
     var photoImage: String { get }
     var photoUser: String { get }
     var photo: PhotoModel { get }
@@ -24,7 +24,7 @@ protocol PhotoViewViewModelProtocol {
     var photoUsername: String { get }
 }
 
-class PhotoViewViewModel: PhotoViewViewModelProtocol {
+class PhotoDisplayViewModel: PhotoDisplayViewModelProtocol {
     
     private var photoData: PhotoModel
     private var userData: UnsplashUser?

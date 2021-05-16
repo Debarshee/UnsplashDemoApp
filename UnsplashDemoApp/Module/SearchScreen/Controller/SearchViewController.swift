@@ -36,7 +36,19 @@ class SearchViewController: UIViewController {
     // MARK: - Private Functions
     private func searchedData(for searchText: String) {
         if !searchText.isEmpty {
-            self.searchViewModel.getSearchedPhotoData(for: searchText)
+            switch searchSegmentedControl.selectedSegmentIndex {
+            case 0:
+                self.searchViewModel.getSearchedPhotoData(for: searchText)
+                
+            case 1:
+                self.searchViewModel.getSearchedUsersData(for: searchText)
+                
+            case 2:
+                self.searchViewModel.getSearchedCollectionData(for: searchText)
+                
+            default:
+                break
+            }
         }
     }
     
