@@ -65,9 +65,10 @@ class PhotoViewController: UIViewController {
         self.present(loginViewController, animated: true, completion: nil)
     }
     @IBAction private func downloadButtonClicked(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-        guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
-        loginViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        self.present(loginViewController, animated: true, completion: nil)
+        if let url = URL(string: photoDisplayViewModel?.photoImage ?? ""),
+           let data = try? Data(contentsOf: url),
+           let image = UIImage(data: data) {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
     }
 }

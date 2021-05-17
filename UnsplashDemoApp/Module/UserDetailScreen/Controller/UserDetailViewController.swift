@@ -31,38 +31,40 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userDetailViewModel?.delegate = self
-        userNameLabel.text = userDetailViewModel?.getUserFullName()
-        userImageView.downloadImage(with: userDetailViewModel?.getUserImage())
-        
-        // Blur effect to image view
-        let darkBlur = UIBlurEffect(style: .dark)
-        let blurView = UIVisualEffectView(effect: darkBlur)
-        blurView.frame = userImageView.bounds
-        userImageView.addSubview(blurView)
-        userProfileImageView.downloadImage(with: userDetailViewModel?.getUserProfileImage())
-        
-        // Set Circular bounds to profile image
-        userProfileImageView.layer.cornerRadius = userProfileImageView.frame.width / 2
-        userProfileImageView.clipsToBounds = true
-        
-        // Set text color for segmented control
-        userSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
-        userSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
-        if userDetailViewModel?.getUserLocation() == "" {
-            userLocationLabel.heightAnchor.constraint(equalToConstant: 0).isActive = true
-            userLocationImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-        } else {
-            userLocationLabel.text = userDetailViewModel?.getUserLocation()
+        if userDetailViewModel != nil {
+            userDetailViewModel?.delegate = self
+            userNameLabel.text = userDetailViewModel?.getUserFullName()
+            userImageView.downloadImage(with: userDetailViewModel?.getUserImage())
+            
+            // Blur effect to image view
+            let darkBlur = UIBlurEffect(style: .dark)
+            let blurView = UIVisualEffectView(effect: darkBlur)
+            blurView.frame = userImageView.bounds
+            userImageView.addSubview(blurView)
+            userProfileImageView.downloadImage(with: userDetailViewModel?.getUserProfileImage())
+            
+            // Set Circular bounds to profile image
+            userProfileImageView.layer.cornerRadius = userProfileImageView.frame.width / 2
+            userProfileImageView.clipsToBounds = true
+            
+            // Set text color for segmented control
+            userSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
+            userSegmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+            if userDetailViewModel?.getUserLocation() == "" {
+                userLocationLabel.heightAnchor.constraint(equalToConstant: 0).isActive = true
+                userLocationImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            } else {
+                userLocationLabel.text = userDetailViewModel?.getUserLocation()
+            }
+            
+            if userDetailViewModel?.getUserLink() == "" {
+                userLinkLabel.heightAnchor.constraint(equalToConstant: 0).isActive = true
+                userLinkImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            } else {
+                userLinkLabel.text = userDetailViewModel?.getUserLink()
+            }
+            userDetailViewModel?.getUserPhotos()
         }
-        
-        if userDetailViewModel?.getUserLink() == "" {
-            userLinkLabel.heightAnchor.constraint(equalToConstant: 0).isActive = true
-            userLinkImageView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-        } else {
-            userLinkLabel.text = userDetailViewModel?.getUserLink()
-        }
-        userDetailViewModel?.getUserPhotos()
     }
     
     @IBAction private func userSegmentedControlSelected(_ sender: UISegmentedControl) {
@@ -99,7 +101,6 @@ extension UserDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(userSegmentControl.selectedSegmentIndex)
         if userSegmentControl.selectedSegmentIndex == 2 {
             guard let data = userDetailViewModel?.collectionDataForCell(at: indexPath.row) else {
                 fatalError("Failed to get data")
@@ -129,9 +130,18 @@ extension UserDetailViewController: UITableViewDelegate {
         case 2:
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             guard let collectionsDisplayViewController = storyboard.instantiateViewController(withIdentifier: "CollectionsDisplayViewController") as? CollectionsDisplayViewController else { return }
+            guard let data = userDetailViewModel?.collectionDataForCell(at: indexPath.row) else { return }
+            let collection = userDetailViewModel?.passCollectionData(collectionData: data.userCollectionUsername)
+            collectionsDisplayViewController.collectionDisplayViewModel = collection
+            self.navigationController?.pushViewController(collectionsDisplayViewController, animated: true)
             
         default:
-            break
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            guard let photoViewController = storyboard.instantiateViewController(withIdentifier: "PhotoViewController") as? PhotoViewController else { return }
+            guard let data = userDetailViewModel?.dataForCell(at: indexPath.row) else { return }
+            let photo = userDetailViewModel?.passPhotoData(photoData: data.photoData)
+            photoViewController.photoDisplayViewModel = photo
+            self.navigationController?.pushViewController(photoViewController, animated: true)
         }
     }
 }

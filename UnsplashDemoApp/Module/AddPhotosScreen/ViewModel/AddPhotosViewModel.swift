@@ -30,7 +30,6 @@ class AddPhotosViewModel {
         router.request(PhotoApi.photoCollection) { (result: Result<[BlogPhotos], AppError>) in
             switch result {
             case .success(let data):
-                print(data)
                 self.blogDataSource.append(contentsOf: data.compactMap { BlogCollectionCellViewModel(dataSource: $0) })
                 
             case .failure(let error):

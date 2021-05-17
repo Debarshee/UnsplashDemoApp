@@ -14,6 +14,7 @@ class AddPhotosViewController: UIViewController {
     @IBOutlet private weak var blogCollectionView: UICollectionView! {
         didSet {
             self.blogCollectionView.dataSource = self
+            self.blogCollectionView.delegate = self
         }
     }
     
@@ -25,6 +26,7 @@ class AddPhotosViewController: UIViewController {
     }
 }
 
+// MARK: - Collection Data Source
 extension AddPhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.numberOfRowsInCollection(section: section)
@@ -37,6 +39,16 @@ extension AddPhotosViewController: UICollectionViewDataSource {
         let data = viewModel.listDataForCollection(at: indexPath.row)
         cell.configure(configurator: data)
         return cell
+    }
+}
+
+extension AddPhotosViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = viewModel.listDataForCollection(at: indexPath.row)
+        print(data.html)
+        if let url = URL(string: data.html) {
+            UIApplication.shared.open(url)
+        }
     }
 }
 

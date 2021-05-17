@@ -12,6 +12,8 @@ protocol BlogCollectionCellViewModelProtocol {
     var image: String { get }
     var title: String { get }
     var name: String { get }
+    var html: String { get }
+    var photo: BlogPhotos { get }
 }
 
 class BlogCollectionCellViewModel: BlogCollectionCellViewModelProtocol {
@@ -32,5 +34,13 @@ class BlogCollectionCellViewModel: BlogCollectionCellViewModelProtocol {
     
     var name: String {
         dataSource.coverPhoto?.user?.name ?? ""
+    }
+    
+    var html: String {
+        dataSource.links?.html ?? ""
+    }
+    
+    var photo: BlogPhotos {
+        dataSource
     }
 }

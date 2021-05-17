@@ -83,7 +83,7 @@ class SearchViewModel {
         }
     }
     
-    // MARK: - Pass User Data to User Detail Screen View Model
+    // MARK: - Pass Photo Data to Photo View Screen View Model
     func passPhotoData(photoData: PhotoModel) -> PhotoDisplayViewModel {
         PhotoDisplayViewModel(photoData: photoData)
     }

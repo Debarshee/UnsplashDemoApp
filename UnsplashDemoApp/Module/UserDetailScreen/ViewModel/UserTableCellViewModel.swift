@@ -9,6 +9,7 @@ import Foundation
 
 protocol UserTableCellViewModelProtocol {
     var photoUrl: String { get }
+    var photoData: PhotoModel { get }
 }
 
 class UserTableCellViewModel: UserTableCellViewModelProtocol {
@@ -21,5 +22,9 @@ class UserTableCellViewModel: UserTableCellViewModelProtocol {
     
     var photoUrl: String {
         dataSource.urls?.small ?? ""
+    }
+    
+    var photoData: PhotoModel {
+        dataSource
     }
 }
