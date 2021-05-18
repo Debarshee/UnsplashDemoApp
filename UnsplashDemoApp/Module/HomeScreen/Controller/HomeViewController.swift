@@ -8,10 +8,12 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
+    var selectedIndex = 0
     @IBOutlet private weak var topicPhotosTableView: UITableView! {
         didSet {
             self.topicPhotosTableView.dataSource = self
+            self.topicPhotosTableView.register(UINib(nibName: HomeTableViewFirstCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: HomeTableViewFirstCell.identifier)
         }
     }
     @IBOutlet private weak var topicCollectionView: UICollectionView! {
@@ -61,12 +63,23 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else {
-            fatalError("Failed to dequeue the cell")
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewFirstCell.identifier, for: indexPath) as? HomeTableViewFirstCell else {
+                fatalError("Failed to dequeue the cell")
+            }
+            let data = homeViewModel.listDataForTable(at: indexPath.row)
+            cell.configure(configurator: data)
+            return cell
+            
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else {
+                fatalError("Failed to dequeue the cell")
+            }
+            let data = homeViewModel.listDataForTable(at: indexPath.row)
+            cell.configure(configurator: data)
+            return cell
         }
-        let data = homeViewModel.listDataForTable(at: indexPath.row)
-        cell.configure(configurator: data)
-        return cell
     }
 }
 
@@ -88,8 +101,14 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else {
             fatalError("Failed to dequeue the cell")
+        }
+        if selectedIndex == indexPath.row {
+            cell.cellIsNotSelected = false
+        } else {
+            cell.cellIsNotSelected = true
         }
         let data = homeViewModel.listDataForCollection(at: indexPath.row)
         cell.configure(configurator: data)
@@ -107,6 +126,8 @@ extension HomeViewController: UICollectionViewDataSource {
 // MARK: - CollectionView Delegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndex = indexPath.row
+        self.topicCollectionView.reloadData()
         let data = homeViewModel.listDataForCollection(at: indexPath.row)
         homeViewModel.fetchTopicPhotos(for: data.topicId)
     }

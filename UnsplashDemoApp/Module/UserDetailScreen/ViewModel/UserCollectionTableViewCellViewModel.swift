@@ -17,6 +17,7 @@ protocol UserCollectionTableViewCellViewModelProtocol {
     var userCollectionTag1: String { get }
     var userCollectionTag2: String { get }
     var userCollectionTag3: String { get }
+    var collectionId: String { get }
 }
 
 class UserCollectionTableViewCellViewModel {
@@ -25,6 +26,10 @@ class UserCollectionTableViewCellViewModel {
     
     init(dataSource: PhotoModelUserCollection) {
         self.dataSource = dataSource
+    }
+    
+    var collectionId: String {
+        self.dataSource.id ?? ""
     }
     
     var mainImage: String {

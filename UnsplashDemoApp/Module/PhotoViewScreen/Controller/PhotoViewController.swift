@@ -23,10 +23,10 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         photoDisplayViewModel?.getPhotoData()
-        photoImageView.downloadImage(with: photoDisplayViewModel?.photoImage)
-        userButton.setTitle(photoDisplayViewModel?.photoUser, for: .normal)
         guard let userData = photoDisplayViewModel?.photoUsername else { return }
         photoDisplayViewModel?.getUserData(userName: userData)
+        photoImageView.downloadImage(with: photoDisplayViewModel?.photoImage)
+        userButton.setTitle(photoDisplayViewModel?.photoUser, for: .normal)
     }
     @IBAction private func closeButtonClicked(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)

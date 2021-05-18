@@ -9,9 +9,12 @@ import UIKit
 
 class CollectionsDisplayViewController: UIViewController {
     
+    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var shareCollectionButton: UIButton!
     @IBOutlet private weak var collectionPhotoTableView: UITableView! {
         didSet {
             self.collectionPhotoTableView.dataSource = self
+            self.collectionPhotoTableView.delegate = self
         }
     }
     var collectionDisplayViewModel: CollectionsDisplayViewModel?
@@ -20,6 +23,12 @@ class CollectionsDisplayViewController: UIViewController {
         collectionDisplayViewModel?.delegate = self
         super.viewDidLoad()
         collectionDisplayViewModel?.getCollectionPhotos()
+    }
+    
+    @IBAction private func backButtonClicked(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction private func shareCollectionButtonClicked(_ sender: UIButton) {
     }
 }
 
@@ -37,6 +46,17 @@ extension CollectionsDisplayViewController: UITableViewDataSource {
         }
         cell.configure(configurator: data)
         return cell
+    }
+}
+
+extension CollectionsDisplayViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let photoViewController = storyboard.instantiateViewController(withIdentifier: "PhotoViewController") as? PhotoViewController else { return }
+        guard let data = collectionDisplayViewModel?.photoDataForCell(at: indexPath.row) else { return }
+        let photo = collectionDisplayViewModel?.passPhotoData(photoData: data.photoCollectionData)
+        photoViewController.photoDisplayViewModel = photo
+        self.navigationController?.pushViewController(photoViewController, animated: true)
     }
 }
 

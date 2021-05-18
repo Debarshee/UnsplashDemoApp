@@ -138,7 +138,7 @@ extension SearchViewController: UITableViewDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             guard let collectionsDisplayViewController = storyboard.instantiateViewController(withIdentifier: "CollectionsDisplayViewController") as? CollectionsDisplayViewController else { return }
             let data = searchViewModel.collectionDataForCell(at: indexPath.row)
-            let collection = searchViewModel.passCollectionData(collectionData: data.userCollectionUsername)
+            let collection = searchViewModel.passCollectionData(collectionData: data.collectionId)
             collectionsDisplayViewController.collectionDisplayViewModel = collection
             self.navigationController?.pushViewController(collectionsDisplayViewController, animated: true)
             

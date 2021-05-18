@@ -9,22 +9,27 @@ import Foundation
 
 protocol CollectionDisplayCellViewModelProtocol {
     var photoImage: String { get }
-    var photoCollectionData: PhotoModelUserCollection { get }
+    var photoDescription: String { get }
+    var photoCollectionData: PhotoModel { get }
 }
 
 class CollectionDisplayCellViewModel: CollectionDisplayCellViewModelProtocol {
     
-    private var dataSource: PhotoModelUserCollection
+    private var dataSource: PhotoModel
     
-    init(dataSource: PhotoModelUserCollection) {
+    init(dataSource: PhotoModel) {
         self.dataSource = dataSource
     }
     
     var photoImage: String {
-        dataSource.coverPhoto?.urls?.small ?? ""
+        dataSource.urls?.small ?? ""
     }
     
-    var photoCollectionData: PhotoModelUserCollection {
+    var photoDescription: String {
+        dataSource.description ?? dataSource.altDescription ?? ""
+    }
+    
+    var photoCollectionData: PhotoModel {
         dataSource
     }
 }

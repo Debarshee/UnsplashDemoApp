@@ -19,6 +19,7 @@ enum PhotoApi {
     case searchUsers(searchQuery: String)
     case photoInfo(id: String)
     case userInfo(username: String)
+    case collectionPhotos(id: String)
 }
 
 extension PhotoApi: EndPoint {
@@ -56,7 +57,10 @@ extension PhotoApi: EndPoint {
             return "photos/\(id)"
             
         case .userInfo(let username):
-            return "/users/\(username)"
+            return "users/\(username)"
+            
+        case .collectionPhotos(let id):
+            return "collections/\(id)/photos"
         }
     }
     
@@ -146,6 +150,14 @@ extension PhotoApi: EndPoint {
             )
             
         case .userInfo:
+            return .requestParameters(bodyParameters: nil,
+                                      bodyEncoding: .urlEncoding,
+                                      urlParameters: [
+                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                      ]
+            )
+            
+        case .collectionPhotos:
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [

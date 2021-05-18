@@ -8,6 +8,7 @@ It is a replica of Unsplash App
 3) Implemented Tab Bar Controller for Home Screen, Search Screen, AddImageScreen and Profile Screen
 4) Implemented Generic Network layer using URLSession to get the data from the Unsplash API 
 5) Implemented NSCache library to store Images in the local cache 
+6) Implemented a separate storyboard for Login/Signup Screens
 
 <p align="center">
 <img src="https://github.com/Debarshee/UnsplashDemoApp/blob/master/UnsplashDemoApp/Resources/Github%20Source/Simulator%20Screen%20Recording%20-%20iPhone%2011%20Pro%20Max%20-%202021-05-14%20at%2015.56.41.gif" width="180" height="320"> 
@@ -26,6 +27,7 @@ It is a replica of Unsplash App
 1) Display the information on the photo and the device used to capture the photo
 2) Display location on Apple map, if available
 3) Clicking User name navigates to UserDetailScreen
+4) Implement download image functionality and store it in the photo library
 
 ## UserDetailScreen
 1) Display User profile image with user location and profile link
@@ -39,8 +41,15 @@ It is a replica of Unsplash App
 3) Implemented multi-cell to display different cell style for collections and users
 4) Selecting a collection from the cell navigates to CollectionPhotosDisplayScreen
 
-## CollectionScreen
+## Collection Display Screen
+1) Display all the photos in a collection
+2) Selecting a photo navigates to Photo View Screen
+
+## CollectionScreen (Third Tab)
 1) Implemented horizontal CollectionView to display list of collection
+
+## Login Screen
+1) Implementing login screen
 
 ## API Reference
 https://api.unsplash.com/

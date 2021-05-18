@@ -9,6 +9,8 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
 
+    @IBOutlet private weak var noCellsView: UIView!
+    @IBOutlet private weak var noCellsImageView: UIImageView!
     @IBOutlet private weak var userNameLabel: UILabel!
     @IBOutlet private weak var userImageView: UIImageView!
     @IBOutlet private weak var userLocationLabel: UILabel!
@@ -23,6 +25,7 @@ class UserDetailViewController: UIViewController {
         didSet {
             self.userTableView.dataSource = self
             self.userTableView.delegate = self
+            self.userTableView.tableFooterView = UIView()
             self.userTableView.register(UINib(nibName: UserCollectionTableViewCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: UserCollectionTableViewCell.identifier)
         }
     }
@@ -32,6 +35,7 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if userDetailViewModel != nil {
+            noCellsView.isHidden = true
             userDetailViewModel?.delegate = self
             userNameLabel.text = userDetailViewModel?.getUserFullName()
             userImageView.downloadImage(with: userDetailViewModel?.getUserImage())
@@ -70,12 +74,15 @@ class UserDetailViewController: UIViewController {
     @IBAction private func userSegmentedControlSelected(_ sender: UISegmentedControl) {
         switch userSegmentControl.selectedSegmentIndex {
         case 0:
+            noCellsView.isHidden = true
             userDetailViewModel?.getUserPhotos()
             
         case 1:
+            noCellsView.isHidden = true
             userDetailViewModel?.getUserLikes()
         
         case 2:
+            noCellsView.isHidden = true
             userDetailViewModel?.getUserCollections()
             
         default:
@@ -93,7 +100,11 @@ extension UserDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch userSegmentControl.selectedSegmentIndex {
         case 2:
-            return userDetailViewModel?.numberOfRowsForCollectionIn(section: section) ?? 0
+            let count = userDetailViewModel?.numberOfRowsForCollectionIn(section: section) ?? 0
+            if count < 1 {
+                self.noCellsView.isHidden = false
+            }
+            return count
             
         default:
             return userDetailViewModel?.numberOfRowsIn(section: section) ?? 0
@@ -131,7 +142,7 @@ extension UserDetailViewController: UITableViewDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             guard let collectionsDisplayViewController = storyboard.instantiateViewController(withIdentifier: "CollectionsDisplayViewController") as? CollectionsDisplayViewController else { return }
             guard let data = userDetailViewModel?.collectionDataForCell(at: indexPath.row) else { return }
-            let collection = userDetailViewModel?.passCollectionData(collectionData: data.userCollectionUsername)
+            let collection = userDetailViewModel?.passCollectionData(collectionData: data.collectionId)
             collectionsDisplayViewController.collectionDisplayViewModel = collection
             self.navigationController?.pushViewController(collectionsDisplayViewController, animated: true)
             

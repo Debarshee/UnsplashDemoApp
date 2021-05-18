@@ -45,6 +45,7 @@ extension AddPhotosViewController: UICollectionViewDataSource {
 extension AddPhotosViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = viewModel.listDataForCollection(at: indexPath.row)
+        print("ok")
         print(data.html)
         if let url = URL(string: data.html) {
             UIApplication.shared.open(url)

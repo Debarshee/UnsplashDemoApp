@@ -107,7 +107,7 @@ class UserDetailViewModel {
     
     // MARK: - Pass Collection Data to Collection Display Screen View Model
     func passCollectionData(collectionData: String) -> CollectionsDisplayViewModel {
-        CollectionsDisplayViewModel(collectionUsername: collectionData)
+        CollectionsDisplayViewModel(collectionId: collectionData)
     }
     
     func numberOfRowsIn(section: Int) -> Int {
