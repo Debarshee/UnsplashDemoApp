@@ -6,10 +6,10 @@
 //
 
 import Foundation
-
-struct UserDetail {
-    var userImage: String?
-    var userFullName: String?
-    var imageTitle: String?
-    var imageOwnerName: String?
-}
+//
+// struct UserDetail {
+//    var userImage: String?
+//    var userFullName: String?
+//    var imageTitle: String?
+//    var imageOwnerName: String?
+// }

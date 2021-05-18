@@ -21,28 +21,26 @@ struct PhotoModel: Decodable {
     var urls: PhotoModelUrls?
     var links: PhotoModelLinks
     var likes: Int?
-    // var likedByUser: Bool
+    var likedByUser: Bool
     var currentUserCollections: [PhotoModelUserCollection]?
-    // "sponsorship":null,
+    var sponsorship: String?
     var user: UnsplashUser?
     var exif: PhotoModelExtraInfo?
     var location: PhotoModelLocation?
     var meta: PhotoModelMeta?
     var tags: [PhotoModelTags]?
-    // var relatedCollections: PhotoModelRelatedCollections?
     var views: Int?
     var downloads: Int?
     
     enum CodingKeys: String, CodingKey {
-        case id, width, height, color, description, urls, links, likes, user, exif, location, meta, tags, views, downloads
+        case id, width, height, color, description, urls, links, likes, user, exif, location, meta, tags, views, downloads, sponsorship
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case promotedAt = "promoted_at"
         case blurHash = "blur_hash"
         case altDescription = "alt_description"
-        // case likedByUser = "liked_by_user"
+        case likedByUser = "liked_by_user"
         case currentUserCollections = "current_user_collections"
-        // case relatedCollections = "related_collections"
     }
 }
 

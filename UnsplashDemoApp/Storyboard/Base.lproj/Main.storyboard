@@ -114,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028.985507246377" y="-1322.5446428571429"/>
+            <point key="canvasLocation" x="1029" y="-759"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="pZP-Q1-BNm">
@@ -681,7 +681,7 @@
         <scene sceneID="gGm-W7-Nth">
             <objects>
                 <viewController storyboardIdentifier="PhotoViewController" id="dqc-jm-YlO" customClass="PhotoViewController" customModule="UnsplashDemoApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="1E4-mW-ree">
+                    <view key="view" contentMode="scaleToFill" id="1E4-mW-ree">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -699,8 +699,8 @@
                                     <action selector="photoInfoButtonClicked:" destination="dqc-jm-YlO" eventType="touchDown" id="Vhy-Fw-Ucc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ly0-JT-jfV">
-                                <rect key="frame" x="347.66666666666674" y="747" width="46.333333333333314" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ly0-JT-jfV">
+                                <rect key="frame" x="347.66666666666669" y="747" width="46.333333333333314" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="tintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal">
@@ -711,8 +711,8 @@
                                     <action selector="downloadButtonClicked:" destination="dqc-jm-YlO" eventType="touchDown" id="hLT-ye-DIo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znf-Kb-IKf">
-                                <rect key="frame" x="347.66666666666674" y="682" width="46.333333333333314" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znf-Kb-IKf">
+                                <rect key="frame" x="347.66666666666669" y="682" width="46.333333333333314" height="45"/>
                                 <color key="tintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal">
                                     <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
@@ -722,8 +722,8 @@
                                     <action selector="addPhotoToProfileButtonClicked:" destination="dqc-jm-YlO" eventType="touchDown" id="uBt-Ne-cgh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGZ-87-luD">
-                                <rect key="frame" x="347.66666666666674" y="617" width="46.333333333333314" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGZ-87-luD">
+                                <rect key="frame" x="347.66666666666669" y="617" width="46.333333333333314" height="45"/>
                                 <color key="tintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal">
                                     <imageReference key="image" image="heart.circle" catalog="system" symbolScale="large"/>
@@ -733,7 +733,7 @@
                                     <action selector="likeButtonClicked:" destination="dqc-jm-YlO" eventType="touchDown" id="vnI-7B-SiP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bB-IQ-oTB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bB-IQ-oTB">
                                 <rect key="frame" x="375" y="40" width="19" height="23"/>
                                 <color key="tintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="square.and.arrow.up" catalog="system"/>
@@ -750,7 +750,7 @@
                                     <action selector="closeButtonClicked:" destination="dqc-jm-YlO" eventType="touchDown" id="V5Y-xG-hST"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwV-AD-wVK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwV-AD-wVK">
                                 <rect key="frame" x="182" y="40" width="50" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button">
@@ -1492,7 +1492,7 @@
         <scene sceneID="kby-kL-lvB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="RP7-MQ-mwc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="plus.square" catalog="system" selectedImage="plus.square.fill" id="VfS-tO-aYf"/>
+                    <tabBarItem key="tabBarItem" title="" image="plus.square.fill" catalog="system" selectedImage="plus.square.fill" id="VfS-tO-aYf"/>
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="05J-jI-JFG">
@@ -1511,7 +1511,7 @@
         <scene sceneID="Nxk-eR-fgJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aQa-gR-bpl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person.circle" catalog="system" selectedImage="person.circle.fill" id="tet-8M-jyq"/>
+                    <tabBarItem key="tabBarItem" title="" image="person.circle.fill" catalog="system" selectedImage="person.circle.fill" id="tet-8M-jyq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EYT-VD-qd5">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1536,12 +1536,10 @@
         <image name="location.white" width="16" height="24"/>
         <image name="logo.white_2" width="105" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
-        <image name="plus.square" catalog="system" width="128" height="114"/>
         <image name="plus.square.fill" catalog="system" width="128" height="114"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>

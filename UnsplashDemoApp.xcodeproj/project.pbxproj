@@ -55,6 +55,8 @@
 		57305A2F2645A98D00552FC8 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A2E2645A98C00552FC8 /* Topic.swift */; };
 		57305A312645B34E00552FC8 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A302645B34E00552FC8 /* HomeCollectionViewCell.swift */; };
 		57305A332645CA3B00552FC8 /* HomeCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57305A322645CA3B00552FC8 /* HomeCollectionCellViewModel.swift */; };
+		5734432E26540F3500DD41CB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734432D26540F3400DD41CB /* LoginViewModel.swift */; };
+		573443352654468500DD41CB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573443342654468500DD41CB /* SignUpViewController.swift */; };
 		573D3F1726472B5A00E8C03F /* TopicPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573D3F1626472B5A00E8C03F /* TopicPhoto.swift */; };
 		5787966F2651A94100F43957 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787966E2651A94100F43957 /* LoginViewController.swift */; };
 		5787967326530B7300F43957 /* HomeTableViewFirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787967226530B7300F43957 /* HomeTableViewFirstCell.swift */; };
@@ -125,6 +127,8 @@
 		57305A2E2645A98C00552FC8 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		57305A302645B34E00552FC8 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		57305A322645CA3B00552FC8 /* HomeCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		5734432D26540F3400DD41CB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		573443342654468500DD41CB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		573D3F1626472B5A00E8C03F /* TopicPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicPhoto.swift; sourceTree = "<group>"; };
 		5787966E2651A94100F43957 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5787967226530B7300F43957 /* HomeTableViewFirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewFirstCell.swift; sourceTree = "<group>"; };
@@ -330,6 +334,7 @@
 		5726EA172642A08700091D6B /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				5734432F2654364C00DD41CB /* Sign Up Screen */,
 				578796692651A8EE00F43957 /* Login View Screen */,
 				572D1025264EDEE000B90CFC /* CollectionViewScreen */,
 				5716BA2D264D693600B4869B /* ReviewViewController */,
@@ -527,6 +532,46 @@
 			path = "Github Source";
 			sourceTree = "<group>";
 		};
+		5734432F2654364C00DD41CB /* Sign Up Screen */ = {
+			isa = PBXGroup;
+			children = (
+				573443332654367C00DD41CB /* View Model */,
+				573443322654366C00DD41CB /* View */,
+				573443312654366600DD41CB /* Model */,
+				573443302654365F00DD41CB /* Controller */,
+			);
+			path = "Sign Up Screen";
+			sourceTree = "<group>";
+		};
+		573443302654365F00DD41CB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				573443342654468500DD41CB /* SignUpViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		573443312654366600DD41CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		573443322654366C00DD41CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		573443332654367C00DD41CB /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 		578796692651A8EE00F43957 /* Login View Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +608,7 @@
 		5787966D2651A91000F43957 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				5734432D26540F3400DD41CB /* LoginViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -806,11 +852,13 @@
 				5796FCB2264AD67100C88E8F /* BlogPhotos.swift in Sources */,
 				5726EA5A2642F19F00091D6B /* URLParameterEncoder.swift in Sources */,
 				5726EA0226429FA400091D6B /* SceneDelegate.swift in Sources */,
+				5734432E26540F3500DD41CB /* LoginViewModel.swift in Sources */,
 				572D1024264EAB9D00B90CFC /* WelcomeViewController.swift in Sources */,
 				57305A2F2645A98D00552FC8 /* Topic.swift in Sources */,
 				5726EA3B2642D15F00091D6B /* PhotoApi.swift in Sources */,
 				5726EA602642F19F00091D6B /* Router.swift in Sources */,
 				5716BA2C264D19D200B4869B /* UserCollectionTableViewCellViewModel.swift in Sources */,
+				573443352654468500DD41CB /* SignUpViewController.swift in Sources */,
 				571531D22648B041000594E8 /* PhotoInfoViewController.swift in Sources */,
 				571531DA2648BB0D000594E8 /* UserDetail.swift in Sources */,
 			);

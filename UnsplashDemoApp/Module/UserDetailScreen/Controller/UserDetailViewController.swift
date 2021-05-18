@@ -34,6 +34,7 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if userDetailViewModel != nil {
             noCellsView.isHidden = true
             userDetailViewModel?.delegate = self
@@ -68,6 +69,12 @@ class UserDetailViewController: UIViewController {
                 userLinkLabel.text = userDetailViewModel?.getUserLink()
             }
             userDetailViewModel?.getUserPhotos()
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+            guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
+            loginViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            loginViewController.delegate = self
+            self.present(loginViewController, animated: true, completion: nil)
         }
     }
     
@@ -161,5 +168,12 @@ extension UserDetailViewController: UITableViewDelegate {
 extension UserDetailViewController: UserDetailViewModelDelegate {
     func reloadTableData() {
         self.userTableView.reloadData()
+    }
+}
+
+extension UserDetailViewController: LoginViewControllerDelegate {
+    func passUserData(user: UserDetailViewModel) {
+        userDetailViewModel = user
+        self.viewDidLoad()
     }
 }

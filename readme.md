@@ -49,7 +49,10 @@ It is a replica of Unsplash App
 1) Implemented horizontal CollectionView to display list of collection
 
 ## Login Screen
-1) Implementing login screen
+1) Implementing delegate in login screen to display the information of the user in user detail info screen
+
+## Signup Screen
+1) Implementing Signup screen
 
 ## API Reference
 https://api.unsplash.com/
