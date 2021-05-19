@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         loginViewModel.delegate = self
         usernameTextField.attributedPlaceholder = NSAttributedString(string: "Username",
                                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -36,7 +37,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction private func cancelButtonClicked(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction private func loginButtonClicked(_ sender: UIButton) {
         guard let username = usernameTextField.text else { return }
@@ -47,6 +48,10 @@ class LoginViewController: UIViewController {
     @IBAction private func forgotPasswordButtonClicked(_ sender: UIButton) {
     }
     @IBAction private func signUpButtonClicked(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+        guard let signUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
+        signUpViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
 }
 

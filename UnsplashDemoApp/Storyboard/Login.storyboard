@@ -151,6 +151,7 @@
                             <constraint firstItem="fsc-Wf-PqH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="wDx-yb-TTj"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="CN3-P6-p73"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="YY5-Ja-bFV" id="Cl2-Ag-X83"/>
@@ -164,12 +165,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="60.9375"/>
+            <point key="canvasLocation" x="1042.0289855072465" y="60.9375"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="r20-5R-Fpd">
             <objects>
-                <viewController id="B08-oY-0va" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="B08-oY-0va" customClass="SignUpViewController" customModule="UnsplashDemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JEu-5I-NU8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,6 +193,7 @@
                                                     <color key="titleColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="backToLoginButtonClicked:" destination="B08-oY-0va" eventType="touchDown" id="LJx-KR-P1J"/>
                                                     <action selector="cancelButtonClicked:" destination="Y6W-OH-hqX" eventType="touchDown" id="9Pc-cc-2iO"/>
                                                 </connections>
                                             </button>
@@ -247,6 +249,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButtonClicked:" destination="Y6W-OH-hqX" eventType="touchDown" id="9Oe-bN-dAP"/>
+                                            <action selector="signUpButtonClicked:" destination="B08-oY-0va" eventType="touchDown" id="L96-cw-G93"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qHQ-dM-VSn">
@@ -347,17 +350,45 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8JD-TL-TGR"/>
-                        <color key="backgroundColor" red="0.060412444170000003" green="0.060428135100000002" blue="0.06040903181" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.30027235422702814" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hhD-CN-ggz" firstAttribute="leading" secondItem="8JD-TL-TGR" secondAttribute="leading" constant="20" id="1Lx-d4-qus"/>
                             <constraint firstItem="8JD-TL-TGR" firstAttribute="trailing" secondItem="hhD-CN-ggz" secondAttribute="trailing" constant="20" id="A0V-1r-zab"/>
                             <constraint firstItem="hhD-CN-ggz" firstAttribute="centerY" secondItem="JEu-5I-NU8" secondAttribute="centerY" id="joA-pB-0eh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backToLoginButton" destination="VPI-xW-iSN" id="76p-ZH-RHA"/>
+                        <outlet property="emailTextField" destination="W0H-GM-q49" id="n2G-Lq-WOR"/>
+                        <outlet property="firstNameTextField" destination="hzj-8S-Cg1" id="T1p-i3-YHr"/>
+                        <outlet property="lastNameTextField" destination="bVO-ZJ-GtZ" id="vOg-J9-n2P"/>
+                        <outlet property="passwordTextField" destination="lkB-1w-I6u" id="wOt-bp-cgM"/>
+                        <outlet property="signUpButton" destination="cKm-aF-Jzc" id="rOs-gC-McE"/>
+                        <outlet property="signUpContainerView" destination="hhD-CN-ggz" id="kyO-g1-fg6"/>
+                        <outlet property="usernameTextField" destination="qHQ-dM-VSn" id="YBu-Jf-d7g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjR-B3-uHn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="931.88405797101461" y="67.633928571428569"/>
+            <point key="canvasLocation" x="1842.0289855072465" y="67.633928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nlc-DG-RGi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Tpw-To-EsR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZM6-8i-XSj">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="ams-uV-eiU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g50-Dk-728" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="60.9375"/>
         </scene>
     </scenes>
     <resources>

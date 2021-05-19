@@ -43,7 +43,11 @@ class UserDetailViewModel {
     }
     
     func getUserImage() -> String {
-        self.userDataSource.photos?[0].urls?.small ?? ""
+        var image = ""
+        if (self.userDataSource.photos?.count ?? 0) > 0 {
+            image = self.userDataSource.photos?[0].urls?.small ?? ""
+        }
+        return image
     }
     
     func getUserLocation() -> String {

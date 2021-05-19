@@ -74,7 +74,7 @@ class UserDetailViewController: UIViewController {
             guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
             loginViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
             loginViewController.delegate = self
-            self.present(loginViewController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(loginViewController, animated: true)
         }
     }
     
@@ -113,13 +113,25 @@ extension UserDetailViewController: UITableViewDataSource {
             }
             return count
             
+        case 1:
+            let count = userDetailViewModel?.numberOfRowsIn(section: section) ?? 0
+            if count < 1 {
+                self.noCellsView.isHidden = false
+            }
+            return count
+        
         default:
-            return userDetailViewModel?.numberOfRowsIn(section: section) ?? 0
+            let count = userDetailViewModel?.numberOfRowsIn(section: section) ?? 0
+            if count < 1 {
+                self.noCellsView.isHidden = false
+            }
+            return count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if userSegmentControl.selectedSegmentIndex == 2 {
+        switch userSegmentControl.selectedSegmentIndex {
+        case 2:
             guard let data = userDetailViewModel?.collectionDataForCell(at: indexPath.row) else {
                 fatalError("Failed to get data")
             }
@@ -128,7 +140,18 @@ extension UserDetailViewController: UITableViewDataSource {
             }
             cell.configure(configurator: data)
             return cell
-        } else {
+            
+        case 1:
+            guard let data = userDetailViewModel?.dataForCell(at: indexPath.row) else {
+                fatalError("Failed to get data")
+            }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier) as? UserTableViewCell else {
+                fatalError("Failed to dequeue the cell")
+            }
+            cell.configure(configurator: data)
+            return cell
+            
+        default:
             guard let data = userDetailViewModel?.dataForCell(at: indexPath.row) else {
                 fatalError("Failed to get data")
             }
@@ -172,6 +195,7 @@ extension UserDetailViewController: UserDetailViewModelDelegate {
 }
 
 extension UserDetailViewController: LoginViewControllerDelegate {
+    
     func passUserData(user: UserDetailViewModel) {
         userDetailViewModel = user
         self.viewDidLoad()

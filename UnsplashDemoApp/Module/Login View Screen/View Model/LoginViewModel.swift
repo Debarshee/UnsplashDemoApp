@@ -32,11 +32,4 @@ class LoginViewModel {
             }
         }
     }
-    
-//    func passUserData() -> UserDetailViewModel {
-//        guard let data = userData else {
-//            fatalError("Invalid data")
-//        }
-//
-//    }
 }

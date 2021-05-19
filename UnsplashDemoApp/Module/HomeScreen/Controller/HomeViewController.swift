@@ -50,7 +50,7 @@ class HomeViewController: UIViewController {
     
     private func showWelcomeScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        guard let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? ReviewViewController else { return }
+        guard let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController else { return }
         self.present(welcomeViewController, animated: true, completion: nil)
     }
 }
