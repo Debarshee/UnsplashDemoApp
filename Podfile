@@ -8,5 +8,6 @@ target 'UnsplashDemoApp' do
   # Pods for UnsplashDemoApp
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
 
 end
