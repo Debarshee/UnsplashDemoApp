@@ -66,8 +66,9 @@ class UserDetailViewModel {
         self.userDataSource.username ?? ""
     }
     
-    func getUserPhotos() {
-        router.request(PhotoApi.userPhotos(username: getUsername())) { (result: Result<[PhotoModel], AppError>) in
+    // MARK: - Get Photos Data
+    func getUserPhotos(pageNo: Int) {
+        router.request(PhotoApi.userPhotos(username: getUsername(), page: pageNo)) { (result: Result<[PhotoModel], AppError>) in
             switch result {
             case .success(let data):
                 self.dataSource.removeAll()
@@ -79,8 +80,22 @@ class UserDetailViewModel {
         }
     }
     
-    func getUserCollections() {
-        router.request(PhotoApi.userCollection(username: getUsername())) { (result: Result<[PhotoModelUserCollection], AppError>) in
+    // MARK: - Pagination Photos Data
+    func extendedUserPhotos(pageNo: Int) {
+        router.request(PhotoApi.userPhotos(username: getUsername(), page: pageNo)) { (result: Result<[PhotoModel], AppError>) in
+            switch result {
+            case .success(let data):
+                self.dataSource.append(contentsOf: data.compactMap { UserTableCellViewModel(dataSource: $0) })
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    // MARK: - Get Collection Data
+    func getUserCollections(pageNo: Int) {
+        router.request(PhotoApi.userCollection(username: getUsername(), page: pageNo)) { (result: Result<[PhotoModelUserCollection], AppError>) in
             switch result {
             case .success(let data):
                 self.collectionDataSource.append(contentsOf: data.compactMap { UserCollectionTableViewCellViewModel(dataSource: $0) })
@@ -91,11 +106,38 @@ class UserDetailViewModel {
         }
     }
     
-    func getUserLikes() {
-        router.request(PhotoApi.userLikes(username: getUsername())) { (result: Result<[PhotoModel], AppError>) in
+    // MARK: - Pagination Collection Data
+    func extendedUserCollections(pageNo: Int) {
+        router.request(PhotoApi.userCollection(username: getUsername(), page: pageNo)) { (result: Result<[PhotoModelUserCollection], AppError>) in
+            switch result {
+            case .success(let data):
+                self.collectionDataSource.append(contentsOf: data.compactMap { UserCollectionTableViewCellViewModel(dataSource: $0) })
+            
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    // MARK: - Get Likes Data
+    func getUserLikes(pageNo: Int) {
+        router.request(PhotoApi.userLikes(username: getUsername(), page: pageNo)) { (result: Result<[PhotoModel], AppError>) in
             switch result {
             case .success(let data):
                 self.dataSource.removeAll()
+                self.dataSource.append(contentsOf: data.compactMap { UserTableCellViewModel(dataSource: $0) })
+            
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    // MARK: - Pagination Likes Data
+    func extendedUserLikes(pageNo: Int) {
+        router.request(PhotoApi.userLikes(username: getUsername(), page: pageNo)) { (result: Result<[PhotoModel], AppError>) in
+            switch result {
+            case .success(let data):
                 self.dataSource.append(contentsOf: data.compactMap { UserTableCellViewModel(dataSource: $0) })
             
             case .failure(let error):
@@ -114,7 +156,8 @@ class UserDetailViewModel {
         CollectionsDisplayViewModel(collectionId: collectionData)
     }
     
-    func numberOfRowsIn(section: Int) -> Int {
+    // MARK: - table rows for photo and likes
+    func numberOfRowsIn() -> Int {
         self.dataSource.count
     }
     
@@ -122,7 +165,7 @@ class UserDetailViewModel {
         self.dataSource[index]
     }
     
-    func numberOfRowsForCollectionIn(section: Int) -> Int {
+    func numberOfRowsForCollectionIn() -> Int {
         self.collectionDataSource.count
     }
     

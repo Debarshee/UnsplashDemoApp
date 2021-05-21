@@ -9,11 +9,11 @@ import Foundation
 
 enum PhotoApi {
     case photoCollection
-    case topicCollection
-    case topicPhotos(id: String)
-    case userPhotos(username: String)
-    case userCollection(username: String)
-    case userLikes(username: String)
+    case topicCollection(page: Int)
+    case topicPhotos(id: String, page: Int)
+    case userPhotos(username: String, page: Int)
+    case userCollection(username: String, page: Int)
+    case userLikes(username: String, page: Int)
     case searchPhotos(searchQuery: String)
     case searchCollections(searchQuery: String)
     case searchUsers(searchQuery: String)
@@ -32,16 +32,16 @@ extension PhotoApi: EndPoint {
         case .topicCollection:
             return "topics/"
         
-        case .topicPhotos(let id):
+        case let .topicPhotos(id, _):
             return "topics/\(id)/photos"
         
-        case .userPhotos(let username):
+        case let .userPhotos(username, _):
             return "users/\(username)/photos"
             
-        case .userCollection(let username):
+        case let .userCollection(username, _):
             return "users/\(username)/collections"
         
-        case .userLikes(let username):
+        case let .userLikes(username, _):
             return "users/\(username)/likes"
             
         case .searchPhotos:
@@ -70,47 +70,52 @@ extension PhotoApi: EndPoint {
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
             
-        case .topicCollection:
+        case .topicCollection(let page):
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "page": page,
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
             
-        case .topicPhotos:
+        case let .topicPhotos(_, page):
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "page": page,
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
         
-        case .userPhotos:
+        case let .userPhotos(_, page):
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "page": page,
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
         
-        case .userCollection:
+        case let .userCollection(_, page):
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "page": page,
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
         
-        case .userLikes:
+        case let .userLikes(_, page):
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "page": page,
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
             
@@ -119,7 +124,7 @@ extension PhotoApi: EndPoint {
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
                                         "query": searchQuery,
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
             
@@ -128,7 +133,7 @@ extension PhotoApi: EndPoint {
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
                                         "query": searchQuery,
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
             
@@ -137,7 +142,7 @@ extension PhotoApi: EndPoint {
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
                                         "query": searchQuery,
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
         
@@ -145,7 +150,7 @@ extension PhotoApi: EndPoint {
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
             
@@ -153,7 +158,7 @@ extension PhotoApi: EndPoint {
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
             
@@ -161,7 +166,7 @@ extension PhotoApi: EndPoint {
             return .requestParameters(bodyParameters: nil,
                                       bodyEncoding: .urlEncoding,
                                       urlParameters: [
-                                        "client_id": "EcTvZyV0lF8VFzRRqY1YarOpwtxxID8VFudpRV8rd6g"
+                                        "client_id": ApiConfiguration.apiKey1
                                       ]
             )
         }

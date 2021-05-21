@@ -26,20 +26,15 @@ class HomeViewController: UIViewController {
     @IBOutlet private weak var reviewButton: UIButton!
     
     lazy var homeViewModel = HomeViewModel(delegate: self)
+    private var currentPage = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         topicCollectionView.backgroundColor = .clear
         self.showWelcomeScreen()
-        homeViewModel.fetchTopicPhotos(for: "bo8jQKTaE0Y")
-        homeViewModel.fetchTopicData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // let selectedIndexPath = IndexPath(item: 0, section: 0)
-        // topicCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
+        homeViewModel.fetchTopicPhotos(for: "bo8jQKTaE0Y", pageNo: currentPage)
+        homeViewModel.fetchTopicData(pageNo: currentPage)
     }
     
     @IBAction private func reviewButtonClicked(_ sender: UIButton) {
@@ -63,6 +58,10 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if indexPath.row == homeViewModel.photoDataCount() - 1 {
+//            currentPage += 1
+//            homeViewModel.extendingTopicPhotos(pageNo: currentPage)
+//        }
         switch indexPath.row {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewFirstCell.identifier, for: indexPath) as? HomeTableViewFirstCell else {
@@ -101,7 +100,10 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        if indexPath.row == homeViewModel.topicDataCount() - 1 {
+            currentPage += 1
+            homeViewModel.extendingTopicData(pageNo: currentPage)
+        }
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else {
             fatalError("Failed to dequeue the cell")
         }
@@ -112,24 +114,18 @@ extension HomeViewController: UICollectionViewDataSource {
         }
         let data = homeViewModel.listDataForCollection(at: indexPath.row)
         cell.configure(configurator: data)
-        switch indexPath.row {
-        case 0:
-            collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
-            return cell
-
-        default:
-            return cell
-        }
+        return cell
     }
 }
 
 // MARK: - CollectionView Delegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        currentPage = 1
         self.selectedIndex = indexPath.row
         self.topicCollectionView.reloadData()
         let data = homeViewModel.listDataForCollection(at: indexPath.row)
-        homeViewModel.fetchTopicPhotos(for: data.topicId)
+        homeViewModel.fetchTopicPhotos(for: data.topicId, pageNo: currentPage)
     }
 }
 

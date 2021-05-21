@@ -31,6 +31,7 @@ class UserDetailViewController: UIViewController {
     }
     
     var userDetailViewModel: UserDetailViewModel?
+    var currentPage = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +69,7 @@ class UserDetailViewController: UIViewController {
             } else {
                 userLinkLabel.text = userDetailViewModel?.getUserLink()
             }
-            userDetailViewModel?.getUserPhotos()
+            userDetailViewModel?.getUserPhotos(pageNo: currentPage)
         } else {
             let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
             guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
@@ -81,16 +82,19 @@ class UserDetailViewController: UIViewController {
     @IBAction private func userSegmentedControlSelected(_ sender: UISegmentedControl) {
         switch userSegmentControl.selectedSegmentIndex {
         case 0:
+            currentPage = 1
             noCellsView.isHidden = true
-            userDetailViewModel?.getUserPhotos()
+            userDetailViewModel?.getUserPhotos(pageNo: currentPage)
             
         case 1:
+            currentPage = 1
             noCellsView.isHidden = true
-            userDetailViewModel?.getUserLikes()
+            userDetailViewModel?.getUserLikes(pageNo: currentPage)
         
         case 2:
+            currentPage = 1
             noCellsView.isHidden = true
-            userDetailViewModel?.getUserCollections()
+            userDetailViewModel?.getUserCollections(pageNo: currentPage)
             
         default:
             break
@@ -105,33 +109,31 @@ class UserDetailViewController: UIViewController {
 // MARK: - Table View DataSource
 extension UserDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         switch userSegmentControl.selectedSegmentIndex {
         case 2:
-            let count = userDetailViewModel?.numberOfRowsForCollectionIn(section: section) ?? 0
+            let count = userDetailViewModel?.numberOfRowsForCollectionIn() ?? 0
             if count < 1 {
                 self.noCellsView.isHidden = false
             }
             return count
             
         case 1:
-            let count = userDetailViewModel?.numberOfRowsIn(section: section) ?? 0
-            if count < 1 {
-                self.noCellsView.isHidden = false
-            }
-            return count
+            return userDetailViewModel?.numberOfRowsIn() ?? 0
         
         default:
-            let count = userDetailViewModel?.numberOfRowsIn(section: section) ?? 0
-            if count < 1 {
-                self.noCellsView.isHidden = false
-            }
-            return count
+            return userDetailViewModel?.numberOfRowsIn() ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         switch userSegmentControl.selectedSegmentIndex {
         case 2:
+//            if indexPath.row == (userDetailViewModel?.numberOfRowsForCollectionIn() ?? 0) - 1 {
+//                currentPage += 1
+//                userDetailViewModel?.extendedUserCollections(pageNo: currentPage)
+//            }
             guard let data = userDetailViewModel?.collectionDataForCell(at: indexPath.row) else {
                 fatalError("Failed to get data")
             }
@@ -142,6 +144,10 @@ extension UserDetailViewController: UITableViewDataSource {
             return cell
             
         case 1:
+//            if indexPath.row == (userDetailViewModel?.numberOfRowsIn() ?? 0) - 1 {
+//                currentPage += 1
+//                userDetailViewModel?.extendedUserLikes(pageNo: currentPage)
+//            }
             guard let data = userDetailViewModel?.dataForCell(at: indexPath.row) else {
                 fatalError("Failed to get data")
             }
@@ -152,6 +158,10 @@ extension UserDetailViewController: UITableViewDataSource {
             return cell
             
         default:
+//            if indexPath.row == (userDetailViewModel?.numberOfRowsIn() ?? 0) - 1 {
+//                currentPage += 1
+//                userDetailViewModel?.extendedUserPhotos(pageNo: currentPage)
+//            }
             guard let data = userDetailViewModel?.dataForCell(at: indexPath.row) else {
                 fatalError("Failed to get data")
             }
@@ -195,7 +205,6 @@ extension UserDetailViewController: UserDetailViewModelDelegate {
 }
 
 extension UserDetailViewController: LoginViewControllerDelegate {
-    
     func passUserData(user: UserDetailViewModel) {
         userDetailViewModel = user
         self.viewDidLoad()

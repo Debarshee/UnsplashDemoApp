@@ -17,12 +17,17 @@ class AddPhotosViewController: UIViewController {
             self.blogCollectionView.delegate = self
         }
     }
-    
+    lazy var imagePicker = ImagePicker(presentationController: self, delegate: self)
     lazy var viewModel = AddPhotosViewModel(delegate: self)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.getCollectionData()
+    }
+    
+    @IBAction private func uploadImageButtonClicked(_ sender: UIButton) {
+        print("clicked")
+        self.imagePicker.present(from: sender)
     }
 }
 
@@ -56,5 +61,13 @@ extension AddPhotosViewController: UICollectionViewDelegate {
 extension AddPhotosViewController: AddPhotosViewModelDelegate {
     func reload() {
         self.blogCollectionView.reloadData()
+    }
+}
+
+extension AddPhotosViewController: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        self.uploadImageButton.isHidden = true
+        self.uploadedImageView.image = image
     }
 }
