@@ -1220,7 +1220,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53d-sK-vR5" userLabel="Table View">
-                                <rect key="frame" x="0.0" y="335" width="414" height="478"/>
+                                <rect key="frame" x="0.0" y="384" width="414" height="478"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xSP-jU-qaH">
                                         <rect key="frame" x="0.0" y="49" width="414" height="429"/>
@@ -1309,39 +1309,39 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jx4-VQ-sRn" userLabel="User profile View">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="338"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="387"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVR-ny-fWM">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="338"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="387"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.white" translatesAutoresizingMaskIntoConstraints="NO" id="E4S-mM-JoI">
-                                        <rect key="frame" x="10" y="268" width="20" height="20"/>
+                                        <rect key="frame" x="10" y="317" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="LWQ-KR-9K3"/>
                                             <constraint firstAttribute="width" constant="20" id="ova-xl-Dj5"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="world.white" translatesAutoresizingMaskIntoConstraints="NO" id="cS0-9b-cFY">
-                                        <rect key="frame" x="10" y="298" width="20" height="20"/>
+                                        <rect key="frame" x="10" y="347" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="XQu-NS-MPE"/>
                                             <constraint firstAttribute="height" constant="20" id="egb-rh-5Rv"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTL-p9-wTU">
-                                        <rect key="frame" x="10.000000000000004" y="221.33333333333334" width="58.333333333333343" height="26.333333333333343"/>
+                                        <rect key="frame" x="10.000000000000004" y="270.33333333333331" width="58.333333333333343" height="26.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
                                         <color key="textColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFK-7j-w3y">
-                                        <rect key="frame" x="35" y="267.66666666666669" width="42" height="21"/>
+                                        <rect key="frame" x="35" y="316.66666666666669" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgj-tS-V4z">
-                                        <rect key="frame" x="35" y="297.66666666666669" width="42" height="21"/>
+                                        <rect key="frame" x="35" y="346.66666666666669" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1368,7 +1368,7 @@
                                         <state key="normal" image="square.and.arrow.up" catalog="system"/>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fWq-df-mXP">
-                                        <rect key="frame" x="10" y="121.33333333333331" width="80" height="80"/>
+                                        <rect key="frame" x="10" y="170.33333333333334" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="6cR-il-gQX"/>
                                             <constraint firstAttribute="height" constant="80" id="j3B-ag-Oah"/>
@@ -1433,7 +1433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JyX-Hc-7UN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3186.9565217391305" y="1287.7232142857142"/>
+            <point key="canvasLocation" x="5577" y="632"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ucg-3B-57y">
@@ -1526,9 +1526,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="0hV-LC-SfK" kind="relationship" relationship="rootViewController" id="0EA-WP-uWT"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JGj-5T-EH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1549,7 +1546,7 @@
         <image name="photo.fill" catalog="system" width="128" height="93"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="plus.square.fill" catalog="system" width="128" height="114"/>
-        <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
+        <image name="slider.horizontal.3" catalog="system" width="32" height="32"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="square.card" width="133" height="150"/>
         <image name="uploadImage" width="920" height="948"/>

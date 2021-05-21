@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -78,6 +78,7 @@
 		5796FCB8264D02F200C88E8F /* UserCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5796FCB7264D02F200C88E8F /* UserCollectionTableViewCell.swift */; };
 		57B13CE526577E9B00E87E96 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B13CE426577E9A00E87E96 /* SignUpViewModel.swift */; };
 		57B13CE726577F7200E87E96 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57B13CE626577F7100E87E96 /* GoogleService-Info.plist */; };
+		57B13CEB2658239900E87E96 /* AlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B13CEA2658239900E87E96 /* AlertProtocol.swift */; };
 		7838C0558391B10B9DEA6F32 /* Pods_UnsplashDemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B817341EAEAE3150669076AC /* Pods_UnsplashDemoApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +157,7 @@
 		5796FCB7264D02F200C88E8F /* UserCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		57B13CE426577E9A00E87E96 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		57B13CE626577F7100E87E96 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		57B13CEA2658239900E87E96 /* AlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProtocol.swift; sourceTree = "<group>"; };
 		B817341EAEAE3150669076AC /* Pods_UnsplashDemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsplashDemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBDECE288483BEA5955062F5 /* Pods-UnsplashDemoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsplashDemoApp.debug.xcconfig"; path = "Target Support Files/Pods-UnsplashDemoApp/Pods-UnsplashDemoApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -487,6 +489,7 @@
 				5726EA682642F65D00091D6B /* UIImageView+Ext.swift */,
 				5726EA692642F65D00091D6B /* ViewReusable.swift */,
 				5716BA32264D7CE900B4869B /* ShareProtocol.swift */,
+				57B13CEA2658239900E87E96 /* AlertProtocol.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -747,7 +750,6 @@
 				CBDECE288483BEA5955062F5 /* Pods-UnsplashDemoApp.debug.xcconfig */,
 				1EA59F2A12FDE9721A79E4DA /* Pods-UnsplashDemoApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -957,6 +959,7 @@
 				5716BA2C264D19D200B4869B /* UserCollectionTableViewCellViewModel.swift in Sources */,
 				573443352654468500DD41CB /* SignUpViewController.swift in Sources */,
 				573443382656A69400DD41CB /* ImagePicker.swift in Sources */,
+				57B13CEB2658239900E87E96 /* AlertProtocol.swift in Sources */,
 				571531D22648B041000594E8 /* PhotoInfoViewController.swift in Sources */,
 				571531DA2648BB0D000594E8 /* UserDetail.swift in Sources */,
 			);
