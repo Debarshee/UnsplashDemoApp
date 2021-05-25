@@ -5,6 +5,7 @@
 //  Created by Debarshee on 5/16/21.
 //
 
+import Firebase
 import UIKit
 
 protocol LoginViewControllerDelegate: AnyObject {
@@ -17,7 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var forgotPasswordButton: UIButton!
     @IBOutlet private weak var signUpButton: UIButton!
-    @IBOutlet private weak var usernameTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var loginContainerView: UIView!
     
@@ -28,8 +29,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         loginViewModel.delegate = self
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: "Username",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email",
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",
                                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         loginContainerView.layer.cornerRadius = 20
@@ -40,10 +41,9 @@ class LoginViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction private func loginButtonClicked(_ sender: UIButton) {
-        guard let username = usernameTextField.text else { return }
-        if !username.isEmpty {
-            loginViewModel.getUserData(userName: username)
-        }
+        guard let unwrappedEmail = emailTextField.text else { return }
+        guard let unwrappedPassword = passwordTextField.text else { return }
+        self.signIn(email: unwrappedEmail, password: unwrappedPassword)
     }
     @IBAction private func forgotPasswordButtonClicked(_ sender: UIButton) {
     }
@@ -52,6 +52,18 @@ class LoginViewController: UIViewController {
         guard let signUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
         signUpViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         self.navigationController?.pushViewController(signUpViewController, animated: true)
+    }
+    
+    private func signIn(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let finalError = error {
+                print(finalError.localizedDescription)
+            } else {
+            if let finalResult = result {
+                print(finalResult.user.providerID)
+            }
+            }
+        }
     }
 }
 

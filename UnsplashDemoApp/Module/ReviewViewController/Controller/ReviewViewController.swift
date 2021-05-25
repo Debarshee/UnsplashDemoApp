@@ -5,6 +5,7 @@
 //  Created by Debarshee on 5/13/21.
 //
 
+import Firebase
 import UIKit
 
 class ReviewViewController: UIViewController {
@@ -14,9 +15,11 @@ class ReviewViewController: UIViewController {
     @IBOutlet private weak var openUnsplashButton: UIButton!
     @IBOutlet private weak var openLicenseButton: UIButton!
     @IBOutlet private weak var recommendUnsplashButton: UIButton!
+    @IBOutlet private weak var signOutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.checkUser()
     }
     
     @IBAction private func doneButtonClicked(_ sender: UIButton) {
@@ -69,5 +72,22 @@ class ReviewViewController: UIViewController {
         
         activityViewController.isModalInPresentation = true
         self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction private func signOutButtonClicked(_ sender: UIButton) {
+        do {
+          try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+          print("Error signing out: %@", signOutError)
+        }
+    }
+    
+    private func checkUser() {
+        Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            guard let self = self else { return }
+            if user == nil {
+                self.signOutButton.isHidden = true
+            }
+        }
     }
 }

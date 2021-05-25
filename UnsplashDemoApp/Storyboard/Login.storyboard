@@ -52,7 +52,7 @@
                                             <constraint firstAttribute="bottom" secondItem="zX4-s2-u16" secondAttribute="bottom" constant="16" id="wqW-51-UlB"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPW-JT-Z5j">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test@email.com" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IPW-JT-Z5j">
                                         <rect key="frame" x="10" y="74" width="354" height="34"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,7 +67,7 @@
                                             <constraint firstAttribute="height" constant="1" id="dLh-iC-DhP"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YEh-h6-tzs">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test123456" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YEh-h6-tzs">
                                         <rect key="frame" x="10" y="119" width="354" height="34"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -155,12 +155,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="YY5-Ja-bFV" id="Cl2-Ag-X83"/>
+                        <outlet property="emailTextField" destination="IPW-JT-Z5j" id="4ux-5Z-I8q"/>
                         <outlet property="forgotPasswordButton" destination="984-bN-78f" id="l98-69-srd"/>
                         <outlet property="loginButton" destination="Ipq-Y3-PcN" id="oBM-hf-bVh"/>
                         <outlet property="loginContainerView" destination="fsc-Wf-PqH" id="weQ-iQ-D1Q"/>
                         <outlet property="passwordTextField" destination="YEh-h6-tzs" id="1wq-Oc-Pd3"/>
                         <outlet property="signUpButton" destination="eEN-aI-7jo" id="CnL-ae-1Mj"/>
-                        <outlet property="usernameTextField" destination="IPW-JT-Z5j" id="GNd-Yx-cZa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

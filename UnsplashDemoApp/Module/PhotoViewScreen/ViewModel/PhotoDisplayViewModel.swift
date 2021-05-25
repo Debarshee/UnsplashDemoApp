@@ -5,6 +5,8 @@
 //  Created by Debarshee on 5/9/21.
 //
 
+import Firebase
+import FirebaseDatabase
 import Foundation
 import MapKit
 
@@ -26,6 +28,10 @@ protocol PhotoDisplayViewModelProtocol {
 
 class PhotoDisplayViewModel: PhotoDisplayViewModelProtocol {
     
+    var ref: DocumentReference?
+    let db = Firestore.firestore()
+    var profilePhotos: [String] = []
+    var profileLikedPhotos: [String] = []
     private var photoData: PhotoModel
     private var userData: UnsplashUser?
     var photoId: String?
@@ -144,6 +150,60 @@ class PhotoDisplayViewModel: PhotoDisplayViewModelProtocol {
             
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    func getPhotoDataFromFireBase() {
+        Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            guard let self = self else { return }
+            if user != nil {
+                self.db.collection("Users")
+                    .document(user?.uid ?? "" )
+                    .getDocument { document, error in
+                        if let unwrappedError = error {
+                            print("Error \(unwrappedError)")
+                        } else {
+                            if let snapshotDocument = document {
+                                let dicts = snapshotDocument.data()
+                                guard let dict = dicts else { return }
+                                if let photoArray = dict["photoIds"] as? [String], let likedPhotoArray = dict["likedPhotos"] as? [String] {
+                                    self.profilePhotos = photoArray
+                                    self.profileLikedPhotos = likedPhotoArray
+                                }
+                            }
+                        }
+                    }
+            }
+        }
+    }
+    
+    func addPhotoToProfile(profile: FirebaseAuth.User) {
+        profilePhotos.append(photo.id ?? "")
+        db.collection("Users").document(profile.uid).setData([
+            "photoIds": profilePhotos,
+            "addedByUser": profile.uid,
+            "likedPhotos": []
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    func addLikedPhotoToProfile(profile: FirebaseAuth.User) {
+        profileLikedPhotos.append(photo.id ?? "")
+        db.collection("Users").document(profile.uid).setData([
+            "photoIds": profilePhotos,
+            "addedByUser": profile.uid,
+            "likedPhotos": profileLikedPhotos
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
             }
         }
     }

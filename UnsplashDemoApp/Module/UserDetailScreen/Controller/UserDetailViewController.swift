@@ -70,12 +70,6 @@ class UserDetailViewController: UIViewController {
                 userLinkLabel.text = userDetailViewModel?.getUserLink()
             }
             userDetailViewModel?.getUserPhotos(pageNo: currentPage)
-        } else {
-            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-            guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else { return }
-            loginViewController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-            loginViewController.delegate = self
-            self.navigationController?.pushViewController(loginViewController, animated: true)
         }
     }
     
