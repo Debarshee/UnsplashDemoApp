@@ -25,8 +25,12 @@ class AddPhotosViewController: UIViewController {
         viewModel.getCollectionData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getPhotoDataFromFireBase()
+    }
+    
     @IBAction private func uploadImageButtonClicked(_ sender: UIButton) {
-        print("clicked")
         self.imagePicker.present(from: sender)
     }
 }
@@ -67,7 +71,10 @@ extension AddPhotosViewController: AddPhotosViewModelDelegate {
 extension AddPhotosViewController: ImagePickerDelegate {
 
     func didSelect(image: UIImage?) {
-        self.uploadImageButton.isHidden = true
-        self.uploadedImageView.image = image
+        // self.uploadImageButton.isHidden = true
+        // self.uploadedImageView.image = image
+        self.viewModel.uploadMedia(selectedImage: image) { imageUrl in
+            print("Selected Photo: \(imageUrl ?? "")")
+        }
     }
 }

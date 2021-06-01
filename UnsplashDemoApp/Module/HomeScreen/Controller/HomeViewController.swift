@@ -58,10 +58,10 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.row == homeViewModel.photoDataCount() - 1 {
-//            currentPage += 1
-//            homeViewModel.extendingTopicPhotos(pageNo: currentPage)
-//        }
+        if indexPath.row == homeViewModel.photoDataCount() - 1 {
+            currentPage += 1
+            homeViewModel.extendingTopicPhotos(pageNo: currentPage)
+        }
         switch indexPath.row {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewFirstCell.identifier, for: indexPath) as? HomeTableViewFirstCell else {

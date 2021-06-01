@@ -1751,6 +1751,7 @@
                         <outlet property="profileScreenImageView" destination="Ga0-C8-zpy" id="7fD-se-OdL"/>
                         <outlet property="profileSegmentControl" destination="exR-XV-R6d" id="c5s-eQ-Vef"/>
                         <outlet property="profileTableView" destination="RhX-ke-NSP" id="3Lg-pY-1LW"/>
+                        <outlet property="profileViewContainer" destination="ZEg-rJ-goT" id="gVO-uo-jPA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RWM-yh-PQ6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

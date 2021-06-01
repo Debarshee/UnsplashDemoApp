@@ -124,10 +124,10 @@ extension UserDetailViewController: UITableViewDataSource {
         
         switch userSegmentControl.selectedSegmentIndex {
         case 2:
-//            if indexPath.row == (userDetailViewModel?.numberOfRowsForCollectionIn() ?? 0) - 1 {
-//                currentPage += 1
-//                userDetailViewModel?.extendedUserCollections(pageNo: currentPage)
-//            }
+            if indexPath.row == (userDetailViewModel?.numberOfRowsForCollectionIn() ?? 0) - 1 {
+                currentPage += 1
+                userDetailViewModel?.extendedUserCollections(pageNo: currentPage)
+            }
             guard let data = userDetailViewModel?.collectionDataForCell(at: indexPath.row) else {
                 fatalError("Failed to get data")
             }
@@ -138,10 +138,10 @@ extension UserDetailViewController: UITableViewDataSource {
             return cell
             
         case 1:
-//            if indexPath.row == (userDetailViewModel?.numberOfRowsIn() ?? 0) - 1 {
-//                currentPage += 1
-//                userDetailViewModel?.extendedUserLikes(pageNo: currentPage)
-//            }
+            if indexPath.row == (userDetailViewModel?.numberOfRowsIn() ?? 0) - 1 {
+                currentPage += 1
+                userDetailViewModel?.extendedUserLikes(pageNo: currentPage)
+            }
             guard let data = userDetailViewModel?.dataForCell(at: indexPath.row) else {
                 fatalError("Failed to get data")
             }
@@ -152,10 +152,10 @@ extension UserDetailViewController: UITableViewDataSource {
             return cell
             
         default:
-//            if indexPath.row == (userDetailViewModel?.numberOfRowsIn() ?? 0) - 1 {
-//                currentPage += 1
-//                userDetailViewModel?.extendedUserPhotos(pageNo: currentPage)
-//            }
+            if indexPath.row == (userDetailViewModel?.numberOfRowsIn() ?? 0) - 1 {
+                currentPage += 1
+                userDetailViewModel?.extendedUserPhotos(pageNo: currentPage)
+            }
             guard let data = userDetailViewModel?.dataForCell(at: indexPath.row) else {
                 fatalError("Failed to get data")
             }

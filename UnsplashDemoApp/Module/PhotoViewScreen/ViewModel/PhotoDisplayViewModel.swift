@@ -183,7 +183,7 @@ class PhotoDisplayViewModel: PhotoDisplayViewModelProtocol {
         db.collection("Users").document(profile.uid).setData([
             "photoIds": profilePhotos,
             "addedByUser": profile.uid,
-            "likedPhotos": []
+            "likedPhotos": profileLikedPhotos
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")

@@ -11,6 +11,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet private weak var profileViewContainer: UIView!
     @IBOutlet private weak var profileImageView: UIImageView!
     @IBOutlet private weak var profileScreenImageView: UIImageView!
     @IBOutlet private weak var profileNameLabel: UILabel!
@@ -26,10 +27,15 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Blur effect to image view
+        let darkBlur = UIBlurEffect(style: .dark)
+        let blurView = UIVisualEffectView(effect: darkBlur)
+        blurView.frame = profileScreenImageView.bounds
+        profileScreenImageView.addSubview(blurView)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.getData()
     }
     
@@ -63,7 +69,7 @@ class ProfileViewController: UIViewController {
         }
     }
 }
-
+// MARK: - Tableview DataSource
 extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch profileSegmentControl.selectedSegmentIndex {

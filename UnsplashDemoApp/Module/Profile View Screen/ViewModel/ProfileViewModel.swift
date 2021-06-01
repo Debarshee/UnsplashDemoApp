@@ -65,6 +65,7 @@ class ProfileViewModel {
     }
     
     func getPhotos(from photoId: String) {
+        self.photoDataSource.removeAll()
         router.request(PhotoApi.photoInfo(id: photoId)) { (result: Result<PhotoModel, AppError>) in
             switch result {
             case .success(let data):
@@ -77,6 +78,7 @@ class ProfileViewModel {
     }
     
     func getLikedPhotos(from photoId: String) {
+        self.likedPhotoDataSource.removeAll()
         router.request(PhotoApi.photoInfo(id: photoId)) { (result: Result<PhotoModel, AppError>) in
             switch result {
             case .success(let data):
